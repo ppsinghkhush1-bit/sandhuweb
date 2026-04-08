@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SandhuWeb | Premium Web Systems</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -21,89 +22,100 @@ body{background:radial-gradient(circle at top,#020617,#000);color:var(--text)}
 
 nav{
 display:flex;justify-content:space-between;align-items:center;
-padding:20px 60px;position:sticky;top:0;
-background:rgba(0,0,0,.5);backdrop-filter:blur(14px);
+padding:15px 30px;position:sticky;top:0;
+background:rgba(0,0,0,.5);backdrop-filter:blur(10px);
 border-bottom:1px solid var(--border)
 }
-nav h1{font-size:22px;font-weight:700;background:linear-gradient(90deg,#4f46e5,#22d3ee);-webkit-background-clip:text;color:transparent}
-nav a{margin-left:25px;text-decoration:none;color:#9ca3af;font-size:14px}
+nav h1{
+font-size:20px;font-weight:700;
+background:linear-gradient(90deg,#4f46e5,#22d3ee);
+-webkit-background-clip:text;color:transparent
+}
+nav a{margin-left:20px;text-decoration:none;color:#9ca3af;font-size:14px}
 nav a:hover{color:white}
 
-.hero{padding:100px 20px;text-align:center;max-width:900px;margin:auto
+.hero{
+padding:90px 20px;text-align:center;max-width:900px;margin:auto
 }
 .hero h2{
-font-size:56px;font-weight:700;line-height:1.1;
+font-size:42px;font-weight:700;line-height:1.2;
 background:linear-gradient(90deg,#fff,#9ca3af);
 -webkit-background-clip:text;color:transparent
 }
-.hero p{margin-top:20px;color:#9ca3af;font-size:18px}
+.hero p{margin-top:15px;color:#9ca3af;font-size:16px}
 
-.hero-buttons{margin-top:30px;display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+.hero-buttons{margin-top:25px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 
 .btn{
-padding:14px 30px;border-radius:40px;text-decoration:none;font-weight:600;
+padding:12px 25px;border-radius:30px;text-decoration:none;font-weight:600;
 transition:.3s;border:1px solid var(--border)
 }
-
 .btn-primary{
 background:linear-gradient(135deg,#4f46e5,#22d3ee);
 color:white;border:none
 }
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(79,70,229,.4)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(79,70,229,.4)}
 
-.btn-outline{
-color:white;background:transparent
-}
+.btn-outline{color:white}
 .btn-outline:hover{background:rgba(255,255,255,.05)}
 
-section{padding:60px 40px}
-h2{font-size:32px;margin-bottom:30px}
+section{padding:50px 20px}
+h2{font-size:26px;margin-bottom:20px}
 
 .grid{
-display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px
+display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px
 }
 
 .card{
 background:var(--card);
 border:1px solid var(--border);
-padding:30px;border-radius:20px;
-transition:.35s;position:relative
+padding:20px;border-radius:15px;
+transition:.3s
+}
+.card:hover{transform:translateY(-5px)}
+
+.price{font-size:24px;margin:10px 0;color:var(--accent)}
+
+.highlight{border:1px solid #22d3ee}
+
+footer{text-align:center;padding:30px;color:#6b7280}
+
+/* FLOATING BUTTONS */
+.floating-contact{
+position:fixed;
+bottom:20px;
+right:20px;
+display:flex;
+flex-direction:column;
+gap:12px;
+z-index:999;
 }
 
-.card:hover{
-transform:translateY(-8px);
-border-color:#4f46e5;
-box-shadow:0 20px 50px rgba(0,0,0,.5)
+.circle-btn{
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 10px 25px rgba(0,0,0,.4);
+transition:.3s;
 }
 
-.price{font-size:30px;margin:10px 0;color:var(--accent)}
-
-.badge{
-position:absolute;top:15px;right:15px;
-background:var(--accent);color:black;padding:5px 10px;border-radius:20px;font-size:12px
+.circle-btn img{
+width:24px;
+height:24px;
 }
 
-.highlight{
-border:1px solid #22d3ee;transform:scale(1.03)
-}
+.call{background:#4f46e5}
+.whatsapp{background:#25D366}
 
-footer{
-text-align:center;padding:40px;color:#6b7280
+.circle-btn:hover{
+transform:scale(1.1);
 }
-
-.footer-bar{
-position:fixed;bottom:0;width:100%;display:flex;
-background:rgba(0,0,0,.7);backdrop-filter:blur(10px)
-}
-.footer-bar a{flex:1;padding:12px;text-align:center;text-decoration:none;display:flex;justify-content:center;align-items:center}
-.footer-bar img{width:22px;height:22px}
-.footer-bar a:first-child{background:#4f46e5;color:white}
-.footer-bar a:last-child{background:#22d3ee;color:black}
 
 @media(max-width:768px){
-nav{padding:15px 20px}
-.hero h2{font-size:36px}
-section{padding:70px 20px}
+.hero h2{font-size:30px}
 }
 </style>
 </head>
@@ -120,9 +132,8 @@ section{padding:70px 20px}
 </nav>
 
 <div class="hero">
-<h2>Premium Websites That
-Drive Real Business Growth</h2>
-<p>High-performance websites built with clean code, modern UI, and conversion-focused design.</p>
+<h2>Premium Websites That Drive Business Growth</h2>
+<p>Fast, clean coded websites delivered in 7 days.</p>
 
 <div class="hero-buttons">
 <a class="btn btn-primary" href="tel:+919779300886">Call Now</a>
@@ -131,64 +142,41 @@ Drive Real Business Growth</h2>
 </div>
 
 <section id="services">
-<h2>Pricing Plans</h2>
+<h2>Pricing</h2>
 <div class="grid">
 
 <div class="card">
 <h3>Standard</h3>
 <p class="price">₹7,000</p>
-<p>Responsive Design</p>
-<p>Fast Loading</p>
-<p>Business Ready</p>
+<p>Responsive</p>
+<p>Fast</p>
 </div>
 
 <div class="card highlight">
-<div class="badge">Most Popular</div>
 <h3>Premium</h3>
 <p class="price">₹10,000</p>
-<p>Advanced UI/UX</p>
-<p>Full Website Setup</p>
-<p>Priority Support</p>
+<p>Advanced UI</p>
+<p>Full Support</p>
 </div>
 
 </div>
 </section>
 
 <section id="why">
-<h2>Why Choose SandhuWeb</h2>
+<h2>Why SandhuWeb</h2>
 <div class="grid">
-<div class="card">Clean & Optimized Code</div>
-<div class="card">Fast Performance</div>
-<div class="card">No Hidden Costs</div>
-<div class="card">Delivery in 7 Days</div>
+<div class="card">Clean Code</div>
+<div class="card">Fast Delivery</div>
+<div class="card">No Hidden Cost</div>
 </div>
 </section>
 
 <section>
-<h2>Who We Work With</h2>
-<div class="grid">
-<div class="card">Hotels</div>
-<div class="card">Shops</div>
-<div class="card">Businesses</div>
-</div>
-</section>
-
-<section>
-<h2>Simple Process</h2>
-<div class="grid">
-<div class="card">Contact</div>
-<div class="card">Share Details</div>
-<div class="card">We Build</div>
-<div class="card">Launch</div>
-</div>
-</section>
-
-<section id="about">
 <h2>About</h2>
 <div class="card">
 <p><b>Name:</b> Khushwinder Singh</p>
 <p><b>Location:</b> Punjab, India</p>
-<p><b>Skills:</b> HTML, CSS, JavaScript, Responsive Design, UI/UX Design, Website Optimization, Business Website Development</p>
+<p><b>Skills:</b> HTML, CSS, JavaScript, UI/UX, Responsive Design</p>
 </div>
 </section>
 
@@ -200,12 +188,14 @@ Drive Real Business Growth</h2>
 </div>
 </section>
 
-<div class="footer-bar">
-<a href="tel:+919779300886">
-<img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="call">
+<!-- FLOATING CIRCLE BUTTONS -->
+<div class="floating-contact">
+<a href="tel:+919779300886" class="circle-btn call">
+<img src="https://cdn-icons-png.flaticon.com/512/724/724664.png">
 </a>
-<a href="https://wa.me/919779300886">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="whatsapp">
+
+<a href="https://wa.me/919779300886" class="circle-btn whatsapp">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
 </div>
 
