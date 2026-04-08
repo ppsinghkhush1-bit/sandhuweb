@@ -30,7 +30,7 @@ nav a:hover{color:var(--primary)}
 100%{background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085')}
 }
 
-.hero h2{font-size:52px;animation:fadeUp 1s ease}
+.hero h2{font-size:56px;letter-spacing:.5px;animation:fadeUp 1s
 .hero p{margin:20px 0;color:var(--muted);max-width:600px;animation:fadeUp 1.2s ease}
 
 .btn{padding:14px 30px;background:var(--primary);border:none;border-radius:30px;font-weight:600;text-decoration:none;color:black;display:inline-block;transition:.25s}
@@ -40,7 +40,10 @@ nav a:hover{color:var(--primary)}
 section{padding:80px 60px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 
-.card{background:var(--card);padding:25px;border-radius:15px;border:1px solid rgba(255,255,255,.05);transition:.4s}
+.card{background:linear-gradient(145deg,#0b1220,#0a0f1a);padding:28px;border-radius:18px;border:1px solid rgba(255,255,255,.08);transition:.4s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(56,189,248,.15),transparent);opacity:0;transition:.5s}
+.card:hover::before{opacity:1}
+.card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,.5)}
 .card:hover{transform:translateY(-10px) scale(1.02)}
 .card:active{transform:scale(.97)}
 
@@ -144,6 +147,15 @@ footer{text-align:center;padding:20px;background:rgba(255,255,255,.03)}
     <div class="card">2. Share Your Requirements</div>
     <div class="card">3. We Build Your Website</div>
     <div class="card">4. Delivery in 7 Days</div>
+  </div>
+</section>
+
+<section id="about" class="fade">
+  <h2>About Me</h2>
+  <div class="card">
+    <p><b>Name:</b> Khushwinder Singh</p>
+    <p><b>Location:</b> Punjab, India</p>
+    <p><b>Skills:</b> HTML, CSS, JavaScript, Responsive Design, Website Optimization, UI/UX Design, Business Website Development</p>
   </div>
 </section>
 
