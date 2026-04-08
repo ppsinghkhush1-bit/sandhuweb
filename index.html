@@ -3,141 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SandhuWeb | Future Web Systems</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>SandhuWeb | Premium Web Systems</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
---primary:#00f0ff;
+--primary:#4f46e5;
+--accent:#22d3ee;
 --bg:#020617;
---glass:rgba(255,255,255,0.05);
---text:#e6f7ff;
+--card:rgba(255,255,255,0.04);
+--border:rgba(255,255,255,0.08);
+--text:#e5e7eb;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:'Poppins',sans-serif;
-background:radial-gradient(circle at top,#020617,#000);
-color:var(--text);
-overflow-x:hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:radial-gradient(circle at top,#020617,#000);color:var(--text)}
 
 nav{
-display:flex;
-justify-content:space-between;
-padding:20px 40px;
-position:sticky;
-top:0;
-backdrop-filter:blur(15px);
-background:rgba(0,0,0,.4);
-border-bottom:1px solid rgba(255,255,255,.08)
+display:flex;justify-content:space-between;align-items:center;
+padding:20px 60px;position:sticky;top:0;
+background:rgba(0,0,0,.5);backdrop-filter:blur(14px);
+border-bottom:1px solid var(--border)
 }
-nav h1{font-family:'Orbitron';color:var(--primary)}
-nav a{color:#aaa;margin-left:20px;text-decoration:none}
-nav a:hover{color:var(--primary)}
+nav h1{font-size:22px;font-weight:700;background:linear-gradient(90deg,#4f46e5,#22d3ee);-webkit-background-clip:text;color:transparent}
+nav a{margin-left:25px;text-decoration:none;color:#9ca3af;font-size:14px}
+nav a:hover{color:white}
 
 .hero{
-height:90vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-position:relative;
-overflow:hidden
+padding:140px 20px;text-align:center;max-width:900px;margin:auto
 }
-
-/* animated gradient bg */
-.hero::before{
-content:'';
-position:absolute;
-inset:0;
-background:linear-gradient(270deg,#00f0ff,#0ea5e9,#00f0ff);
-background-size:600% 600%;
-animation:flow 10s ease infinite;
-opacity:.15
-}
-
-@keyframes flow{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
-
 .hero h2{
-font-size:52px;
-font-family:'Orbitron';
-letter-spacing:1px;
+font-size:56px;font-weight:700;line-height:1.1;
+background:linear-gradient(90deg,#fff,#9ca3af);
+-webkit-background-clip:text;color:transparent
 }
-.hero span{color:var(--primary)}
-.hero p{margin-top:15px;color:#aaa}
+.hero p{margin-top:20px;color:#9ca3af;font-size:18px}
+
+.hero-buttons{margin-top:30px;display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
 
 .btn{
-margin-top:25px;
-padding:14px 35px;
-border-radius:40px;
-background:linear-gradient(90deg,#00f0ff,#0ea5e9);
-color:#000;
-text-decoration:none;
-font-weight:600;
-transition:.3s
+padding:14px 30px;border-radius:40px;text-decoration:none;font-weight:600;
+transition:.3s;border:1px solid var(--border)
 }
-.btn:hover{transform:scale(1.08);box-shadow:0 0 25px #00f0ff}
 
-section{padding:80px 40px}
+.btn-primary{
+background:linear-gradient(135deg,#4f46e5,#22d3ee);
+color:white;border:none
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(79,70,229,.4)}
+
+.btn-outline{
+color:white;background:transparent
+}
+.btn-outline:hover{background:rgba(255,255,255,.05)}
+
+section{padding:100px 60px}
+h2{font-size:32px;margin-bottom:30px}
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px
+display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px
 }
 
 .card{
-background:var(--glass);
-border:1px solid rgba(255,255,255,.08);
-padding:30px;
-border-radius:20px;
-backdrop-filter:blur(20px);
-transition:.4s;
-position:relative;
-overflow:hidden
+background:var(--card);
+border:1px solid var(--border);
+padding:30px;border-radius:20px;
+transition:.35s;position:relative
 }
 
-.card::after{
-content:'';
-position:absolute;
-inset:0;
-background:linear-gradient(120deg,transparent,#00f0ff33,transparent);
-opacity:0;
-transition:.5s
+.card:hover{
+transform:translateY(-8px);
+border-color:#4f46e5;
+box-shadow:0 20px 50px rgba(0,0,0,.5)
 }
 
-.card:hover::after{opacity:1}
-.card:hover{transform:translateY(-10px) scale(1.03)}
+.price{font-size:30px;margin:10px 0;color:var(--accent)}
 
-.price{color:var(--primary);font-size:28px}
+.badge{
+position:absolute;top:15px;right:15px;
+background:var(--accent);color:black;padding:5px 10px;border-radius:20px;font-size:12px
+}
 
-h2{margin-bottom:30px;font-family:'Orbitron'}
+.highlight{
+border:1px solid #22d3ee;transform:scale(1.03)
+}
+
+footer{
+text-align:center;padding:40px;color:#6b7280
+}
 
 .footer-bar{
-position:fixed;
-bottom:0;
-width:100%;
-display:flex;
-backdrop-filter:blur(10px)
+position:fixed;bottom:0;width:100%;display:flex;
+background:rgba(0,0,0,.7);backdrop-filter:blur(10px)
 }
 .footer-bar a{
-flex:1;
-padding:15px;
-text-align:center;
-text-decoration:none;
-font-weight:600
+flex:1;padding:15px;text-align:center;text-decoration:none;font-weight:600
 }
-.footer-bar a:first-child{background:#00f0ff;color:#000}
-.footer-bar a:last-child{background:#25D366;color:#000}
+.footer-bar a:first-child{background:#4f46e5;color:white}
+.footer-bar a:last-child{background:#22d3ee;color:black}
 
-footer{text-align:center;padding:20px;color:#666}
-
+@media(max-width:768px){
+nav{padding:15px 20px}
+.hero h2{font-size:36px}
+section{padding:70px 20px}
+}
 </style>
 </head>
 
@@ -146,70 +115,89 @@ footer{text-align:center;padding:20px;color:#666}
 <nav>
 <h1>SandhuWeb</h1>
 <div>
-<a href="#services">Systems</a>
+<a href="#services">Services</a>
 <a href="#why">Why</a>
-<a href="#contact">Connect</a>
+<a href="#contact">Contact</a>
 </div>
 </nav>
 
 <div class="hero">
-<h2>Future <span>Web Systems</span><br>Built For 2030+</h2>
-<p>Ultra-fast coded platforms engineered for business dominance. Delivered in 7 days.</p>
-<a class="btn" href="tel:+919779300886">Initiate Call</a>
+<h2>Premium Websites That
+Drive Real Business Growth</h2>
+<p>High-performance websites built with clean code, modern UI, and conversion-focused design.</p>
+
+<div class="hero-buttons">
+<a class="btn btn-primary" href="tel:+919779300886">Call Now</a>
+<a class="btn btn-outline" href="https://wa.me/919779300886">WhatsApp</a>
+</div>
 </div>
 
 <section id="services">
-<h2>System Packages</h2>
+<h2>Pricing Plans</h2>
 <div class="grid">
+
 <div class="card">
-<h3>Core System</h3>
+<h3>Standard</h3>
 <p class="price">₹7,000</p>
-<p>Fast Architecture</p>
-<p>Mobile Optimized</p>
+<p>Responsive Design</p>
+<p>Fast Loading</p>
+<p>Business Ready</p>
 </div>
 
-<div class="card" style="border:1px solid #00f0ff">
-<h3>Elite System</h3>
+<div class="card highlight">
+<div class="badge">Most Popular</div>
+<h3>Premium</h3>
 <p class="price">₹10,000</p>
-<p>Advanced UI Layers</p>
-<p>Full Control</p>
+<p>Advanced UI/UX</p>
+<p>Full Website Setup</p>
+<p>Priority Support</p>
 </div>
+
 </div>
 </section>
 
 <section id="why">
-<h2>Why SandhuWeb</h2>
+<h2>Why Choose SandhuWeb</h2>
 <div class="grid">
-<div class="card">Clean Code Systems</div>
-<div class="card">Ultra Speed Performance</div>
-<div class="card">No Hidden Cost</div>
-<div class="card">7 Day Deployment</div>
+<div class="card">Clean & Optimized Code</div>
+<div class="card">Fast Performance</div>
+<div class="card">No Hidden Costs</div>
+<div class="card">Delivery in 7 Days</div>
 </div>
 </section>
 
 <section>
-<h2>Deployment Types</h2>
+<h2>Who We Work With</h2>
 <div class="grid">
-<div class="card">Hotel Platforms</div>
-<div class="card">Shop Systems</div>
-<div class="card">Business Engines</div>
+<div class="card">Hotels</div>
+<div class="card">Shops</div>
+<div class="card">Businesses</div>
 </div>
 </section>
 
 <section>
-<h2>Execution Flow</h2>
+<h2>Simple Process</h2>
 <div class="grid">
-<div class="card">Connect</div>
-<div class="card">Send Data</div>
-<div class="card">System Build</div>
+<div class="card">Contact</div>
+<div class="card">Share Details</div>
+<div class="card">We Build</div>
 <div class="card">Launch</div>
 </div>
 </section>
 
-<section id="contact">
-<h2>Connect</h2>
+<section id="about">
+<h2>About</h2>
 <div class="card">
-<p>+91 9779300886</p>
+<p><b>Name:</b> Khushwinder Singh</p>
+<p><b>Location:</b> Punjab, India</p>
+<p><b>Skills:</b> HTML, CSS, JavaScript, Responsive Design, UI/UX Design, Website Optimization, Business Website Development</p>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<div class="card">
+<p><b>Phone:</b> +91 9779300886</p>
 <p>sandhuweb.com</p>
 </div>
 </section>
@@ -219,7 +207,7 @@ footer{text-align:center;padding:20px;color:#666}
 <a href="https://wa.me/919779300886">WhatsApp</a>
 </div>
 
-<footer>© SandhuWeb Future Systems</footer>
+<footer>© SandhuWeb</footer>
 
 </body>
 </html>
