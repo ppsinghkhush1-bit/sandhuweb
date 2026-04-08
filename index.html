@@ -18,67 +18,175 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:radial-gradient(circle at top,#020617,#000);color:var(--text)}
 
+body{
+background:radial-gradient(circle at top,#020617,#000);
+color:var(--text);
+scroll-behavior:smooth;
+overflow-x:hidden;
+}
+
+/* LIVE CODE BACKGROUND */
+.code-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+pointer-events:none;
+}
+
+.code-line{
+position:absolute;
+top:-100px;
+font-size:12px;
+color:rgba(34,211,238,0.15);
+white-space:nowrap;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+from{transform:translateY(-100px);}
+to{transform:translateY(110vh);}
+}
+
+/* NAV */
 nav{
-display:flex;justify-content:space-between;align-items:center;
-padding:15px 30px;position:sticky;top:0;
-background:rgba(0,0,0,.5);backdrop-filter:blur(10px);
-border-bottom:1px solid var(--border)
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+position:sticky;
+top:0;
+background:rgba(0,0,0,.5);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--border);
 }
+
 nav h1{
-font-size:20px;font-weight:700;
+font-size:20px;
+font-weight:700;
 background:linear-gradient(90deg,#4f46e5,#22d3ee);
--webkit-background-clip:text;color:transparent
+-webkit-background-clip:text;
+color:transparent;
 }
-nav a{margin-left:20px;text-decoration:none;color:#9ca3af;font-size:14px}
+
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:#9ca3af;
+font-size:14px;
+}
+
 nav a:hover{color:white}
 
+/* HERO */
 .hero{
-padding:90px 20px;text-align:center;max-width:900px;margin:auto
+padding:90px 20px;
+text-align:center;
+max-width:900px;
+margin:auto;
 }
+
 .hero h2{
-font-size:42px;font-weight:700;line-height:1.2;
+font-size:42px;
+font-weight:700;
 background:linear-gradient(90deg,#fff,#9ca3af);
--webkit-background-clip:text;color:transparent
+-webkit-background-clip:text;
+color:transparent;
 }
-.hero p{margin-top:15px;color:#9ca3af;font-size:16px}
 
-.hero-buttons{margin-top:25px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero p{
+margin-top:15px;
+color:#9ca3af;
+}
 
+.hero-buttons{
+margin-top:25px;
+display:flex;
+gap:10px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+/* BUTTONS */
 .btn{
-padding:12px 25px;border-radius:30px;text-decoration:none;font-weight:600;
-transition:.3s;border:1px solid var(--border)
+padding:12px 25px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+border:1px solid var(--border);
 }
+
 .btn-primary{
 background:linear-gradient(135deg,#4f46e5,#22d3ee);
-color:white;border:none
+color:white;
+border:none;
 }
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(79,70,229,.4)}
+
+.btn-primary:hover{transform:translateY(-3px)}
 
 .btn-outline{color:white}
-.btn-outline:hover{background:rgba(255,255,255,.05)}
 
-section{padding:50px 20px}
-h2{font-size:26px;margin-bottom:20px}
+.btn:hover{background:rgba(255,255,255,.05)}
 
-.grid{
-display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px
+/* SECTIONS */
+section{
+padding:50px 20px;
+opacity:0;
+transform:translateY(30px);
+transition:.6s;
 }
 
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+h2{
+font-size:26px;
+margin-bottom:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+/* CARD */
 .card{
 background:var(--card);
 border:1px solid var(--border);
-padding:20px;border-radius:15px;
-transition:.3s
+padding:20px;
+border-radius:15px;
+transition:.3s;
 }
-.card:hover{transform:translateY(-5px)}
 
-.price{font-size:24px;margin:10px 0;color:var(--accent)}
+.card:hover{
+transform:translateY(-6px);
+}
 
-.highlight{border:1px solid #22d3ee}
+.price{
+font-size:24px;
+margin:10px 0;
+color:var(--accent);
+}
 
-footer{text-align:center;padding:30px;color:#6b7280}
+.highlight{
+border:1px solid #22d3ee;
+}
+
+/* CTA */
+.cta{
+text-align:center;
+background:rgba(255,255,255,0.03);
+padding:60px 20px;
+border-radius:20px;
+margin:20px;
+}
 
 /* FLOATING BUTTONS */
 .floating-contact{
@@ -110,17 +218,22 @@ height:24px;
 .call{background:#4f46e5}
 .whatsapp{background:#25D366}
 
-.circle-btn:hover{
-transform:scale(1.1);
+.circle-btn:hover{transform:scale(1.15)}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:30px;
+color:#6b7280;
 }
 
-@media(max-width:768px){
-.hero h2{font-size:30px}
-}
 </style>
 </head>
 
 <body>
+
+<!-- LIVE CODE BACKGROUND -->
+<div class="code-bg" id="codeBg"></div>
 
 <nav>
 <h1>SandhuWeb</h1>
@@ -132,8 +245,8 @@ transform:scale(1.1);
 </nav>
 
 <div class="hero">
-<h2>Premium Websites That Drive Business Growth</h2>
-<p>Fast, clean coded websites delivered in 7 days.</p>
+<h2>Premium Websites That Drive Growth</h2>
+<p>Fast, modern, and conversion-focused websites.</p>
 
 <div class="hero-buttons">
 <a class="btn btn-primary" href="tel:+919779300886">Call Now</a>
@@ -168,7 +281,15 @@ transform:scale(1.1);
 <div class="card">Clean Code</div>
 <div class="card">Fast Delivery</div>
 <div class="card">No Hidden Cost</div>
+<div class="card">Client Focus</div>
 </div>
+</section>
+
+<section class="cta">
+<h2>Ready to Grow?</h2>
+<p>Get your professional website today.</p>
+<br>
+<a class="btn btn-primary" href="tel:+919779300886">Start Now</a>
 </section>
 
 <section>
@@ -176,7 +297,7 @@ transform:scale(1.1);
 <div class="card">
 <p><b>Name:</b> Khushwinder Singh</p>
 <p><b>Location:</b> Punjab, India</p>
-<p><b>Skills:</b> HTML, CSS, JavaScript, UI/UX, Responsive Design</p>
+<p><b>Skills:</b> HTML, CSS, JavaScript, UI/UX</p>
 </div>
 </section>
 
@@ -188,7 +309,7 @@ transform:scale(1.1);
 </div>
 </section>
 
-<!-- FLOATING CIRCLE BUTTONS -->
+<!-- FLOATING BUTTONS -->
 <div class="floating-contact">
 <a href="tel:+919779300886" class="circle-btn call">
 <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png">
@@ -200,6 +321,42 @@ transform:scale(1.1);
 </div>
 
 <footer>© SandhuWeb</footer>
+
+<script>
+/* SCROLL ANIMATION */
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+sections.forEach(sec => {
+const top = sec.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
+sec.classList.add('show');
+}
+});
+});
+
+/* CODE BACKGROUND */
+const codeBg = document.getElementById("codeBg");
+
+const codes = [
+"const dev = true;",
+"function build(){}",
+"return success;",
+"<html>",
+"console.log('SandhuWeb');",
+"while(true){ grow(); }",
+"let speed = 'fast';"
+];
+
+for(let i=0;i<40;i++){
+let span = document.createElement("span");
+span.className = "code-line";
+span.style.left = Math.random() * 100 + "vw";
+span.style.animationDuration = (5 + Math.random()*10) + "s";
+span.innerText = codes[Math.floor(Math.random()*codes.length)];
+codeBg.appendChild(span);
+}
+</script>
 
 </body>
 </html>
