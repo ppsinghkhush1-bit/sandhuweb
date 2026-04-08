@@ -1,217 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SandhuWeb | Professional Website Development Agency</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SandhuWeb | Professional Website Development</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{--primary:#38bdf8;--bg:#060c1a;--card:#0b1220;--text:#e2e8f0;--muted:#94a3b8}
+:root{--primary:#38bdf8;--bg:#050a18;--card:#0b1220;--text:#e2e8f0}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:var(--bg);color:var(--text);overflow-x:hidden}
+body{background:var(--bg);color:var(--text)}
 
-/* SMOOTH SCROLL */
-html{scroll-behavior:smooth}
-
-
-
-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:rgba(255,255,255,.04);backdrop-filter:blur(12px);position:sticky;top:0}
-nav a{color:var(--muted);margin-left:25px;text-decoration:none;transition:.3s}
+nav{display:flex;justify-content:space-between;padding:15px 40px;background:rgba(255,255,255,.05);position:sticky;top:0}
+nav h1{color:var(--primary)}
+nav a{color:#aaa;margin-left:20px;text-decoration:none}
 nav a:hover{color:var(--primary)}
 
-.hero{padding:120px 60px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background-size:cover;background-position:center;z-index:-2;animation:slideBg 20s infinite ease-in-out}
-.hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.6);z-index:-1}
+.hero{padding:120px 40px;text-align:center;background:linear-gradient(120deg,#020617,#0b1220)}
+.hero h2{font-size:48px}
+.hero span{color:var(--primary)}
+.hero p{margin:15px auto;max-width:600px;color:#aaa}
 
-@keyframes slideBg{
-0%{background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085')}
-50%{background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f')}
-100%{background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085')}
-}
+.btn{display:inline-block;margin-top:20px;padding:12px 25px;border-radius:30px;background:var(--primary);color:#000;text-decoration:none}
 
-.hero h2{font-size:56px;letter-spacing:.5px;animation:fadeUp 1s
-.hero p{margin:20px 0;color:var(--muted);max-width:600px;animation:fadeUp 1.2s ease}
-
-.btn{padding:14px 30px;background:var(--primary);border:none;border-radius:30px;font-weight:600;text-decoration:none;color:black;display:inline-block;transition:.25s}
-.btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 15px 30px rgba(56,189,248,.4)}
-.btn:active{transform:scale(.95)}
-
-section{padding:80px 60px}
+section{padding:70px 40px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:var(--card);padding:25px;border-radius:12px;transition:.3s}
+.card:hover{transform:translateY(-6px)}
 
-.card{background:linear-gradient(145deg,#0b1220,#0a0f1a);padding:28px;border-radius:18px;border:1px solid rgba(255,255,255,.08);transition:.4s;position:relative;overflow:hidden}
-.card::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(56,189,248,.15),transparent);opacity:0;transition:.5s}
-.card:hover::before{opacity:1}
-.card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,.5)}
-.card:hover{transform:translateY(-10px) scale(1.02)}
-.card:active{transform:scale(.97)}
+.price{color:var(--primary);font-size:24px}
 
-.price{font-size:28px;color:var(--primary)}
+.footer-bar{position:fixed;bottom:0;width:100%;display:flex}
+.footer-bar a{flex:1;text-align:center;padding:15px;background:#0ea5e9;color:#000;text-decoration:none;font-weight:600}
+.footer-bar a:last-child{background:#25D366}
 
-.whatsapp-btn{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:14px 18px;border-radius:50px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:.3s}
-.whatsapp-btn:hover{transform:scale(1.1)}
-.whatsapp-btn:active{transform:scale(.9)}
+footer{text-align:center;padding:20px}
 
-.whatsapp-icon{width:20px}
-
-.fade{opacity:0;transform:translateY(60px);transition:1.2s ease}
-.fade.show{opacity:1;transform:translateY(0)}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-
-footer{text-align:center;padding:20px;background:rgba(255,255,255,.03)}
-
-@media(max-width:768px){nav,.hero,section{padding:20px}.hero h2{font-size:36px}}
+@media(max-width:768px){.hero h2{font-size:32px}}
 </style>
 </head>
 
 <body>
 
-
-
 <nav>
-  <h1 style="color:#38bdf8">SandhuWeb</h1>
-  <div>
-    <a href="#services">Services</a>
-    <a href="#requirements">Requirements</a>
-    <a href="#contact">Contact</a>
-  </div>
+<h1>SandhuWeb</h1>
+<div>
+<a href="#services">Services</a>
+<a href="#why">Why</a>
+<a href="#contact">Contact</a>
+</div>
 </nav>
 
 <div class="hero">
-  <h2>Professional Website Development For Growing Businesses</h2>
-  <p>We build ultra-smooth, fast, high-performance coded websites with premium user experience.</p>
-  <a class="btn" href="tel:+919779300886">Call Now</a>
+<h2><span>Fast</span> Website Development</h2>
+<p>Clean coded websites for business. Delivered in 7 days.</p>
+<a class="btn" href="tel:+919779300886">Call Now</a>
 </div>
 
-<section id="services" class="fade">
-  <h2>Services & Pricing</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Standard</h3>
-      <p class="price">₹7,000</p>
-      <p>Fast Code</p>
-      <p>Responsive</p>
-    </div>
-    <div class="card">
-      <h3>Premium</h3>
-      <p class="price">₹10,000</p>
-      <p>Advanced UI</p>
-      <p>Full Support</p>
-    </div>
-  </div>
+<section id="services">
+<h2>Pricing</h2>
+<div class="grid">
+<div class="card">
+<h3>Standard</h3>
+<p class="price">₹7,000</p>
+<p>Responsive</p>
+<p>Fast</p>
+</div>
+<div class="card" style="border:1px solid #38bdf8">
+<h3>Premium</h3>
+<p class="price">₹10,000</p>
+<p>Advanced UI</p>
+<p>Full Support</p>
+</div>
+</div>
 </section>
 
-<section id="requirements" class="fade">
-  <h2>Requirements</h2>
-  <div class="grid">
-    <div class="card">Business Info</div>
-    <div class="card">Photos</div>
-    <div class="card">Location</div>
-  </div>
+<section id="why">
+<h2>Why SandhuWeb</h2>
+<div class="grid">
+<div class="card">Fast Delivery</div>
+<div class="card">Clean Code</div>
+<div class="card">No Hidden Cost</div>
+</div>
 </section>
 
-<section id="why" class="fade">
-  <h2>Why SandhuWeb?</h2>
-  <div class="grid">
-    <div class="card">Clean Coding (No Slow Builders)</div>
-    <div class="card">Fast Loading & Optimized</div>
-    <div class="card">Simple Pricing (No Hidden Cost)</div>
-    <div class="card">7 Day Delivery Guarantee</div>
-  </div>
+<section>
+<h2>We Build For</h2>
+<div class="grid">
+<div class="card">Hotels</div>
+<div class="card">Shops</div>
+<div class="card">Business</div>
+</div>
 </section>
 
-<section id="build" class="fade">
-  <h2>We Build For</h2>
-  <div class="grid">
-    <div class="card">🏨 Hotels (Rooms, Booking, Gallery)</div>
-    <div class="card">🛍 Shops (Products, Contact)</div>
-    <div class="card">💼 Businesses (Services, Leads)</div>
-    <div class="card">📱 Personal Brands & Portfolios</div>
-  </div>
+<section>
+<h2>How It Works</h2>
+<div class="grid">
+<div class="card">Contact</div>
+<div class="card">Share Details</div>
+<div class="card">Get Website</div>
+</div>
 </section>
 
-<section id="urgency" class="fade">
-  <h2>Limited Availability</h2>
-  <div class="card">
-    <p><b>Only 3 Projects Accepted Per Week</b></p>
-    <p>Book your slot now to get your website delivered within 7 days.</p>
-  </div>
+<section id="contact">
+<h2>Contact</h2>
+<div class="card">
+<p>Phone: +91 9779300886</p>
+<p>sandhuweb.com</p>
+</div>
 </section>
 
-<section id="process" class="fade">
-  <h2>How It Works</h2>
-  <div class="grid">
-    <div class="card">1. Contact via Call/WhatsApp</div>
-    <div class="card">2. Share Your Requirements</div>
-    <div class="card">3. We Build Your Website</div>
-    <div class="card">4. Delivery in 7 Days</div>
-  </div>
-</section>
+<div class="footer-bar">
+<a href="tel:+919779300886">Call</a>
+<a href="https://wa.me/919779300886">WhatsApp</a>
+</div>
 
-<section id="about" class="fade">
-  <h2>About Me</h2>
-  <div class="card">
-    <p><b>Name:</b> Khushwinder Singh</p>
-    <p><b>Location:</b> Punjab, India</p>
-    <p><b>Skills:</b> HTML, CSS, JavaScript, Responsive Design, Website Optimization, UI/UX Design, Business Website Development</p>
-  </div>
-</section>
-
-<section id="contact" class="fade">
-  <h2>Contact</h2>
-  <div class="card">
-    <p><b>Phone:</b> +91 9779300886</p>
-  </div>
-</section>
-
-<a class="whatsapp-btn" href="https://wa.me/919779300886" target="_blank">
-  <img class="whatsapp-icon" src="https://cdn-icons-png.flaticon.com/512/733/733585.png"> WhatsApp
-</a>
-
-<footer>© 2026 SandhuWeb</footer>
-
-<script>
-
-document.addEventListener('mousemove',e=>{
-  cursor.style.transform=`translate(${e.clientX}px,${e.clientY}px)`
-});
-
-/* FADE */
-const faders=document.querySelectorAll('.fade');
-window.addEventListener('scroll',()=>{
-  faders.forEach(el=>{
-    if(el.getBoundingClientRect().top<window.innerHeight-80){
-      el.classList.add('show')
-    }
-  })
-});
-
-/* CLICK RIPPLE */
-document.addEventListener('click',e=>{
-  const ripple=document.createElement('div');
-  ripple.style.position='fixed';
-  ripple.style.left=e.clientX+'px';
-  ripple.style.top=e.clientY+'px';
-  ripple.style.width='10px';
-  ripple.style.height='10px';
-  ripple.style.background='white';
-  ripple.style.borderRadius='50%';
-  ripple.style.opacity='0.5';
-  ripple.style.transform='scale(1)';
-  ripple.style.pointerEvents='none';
-  ripple.style.transition='all .6s ease';
-  document.body.appendChild(ripple);
-
-  setTimeout(()=>{
-    ripple.style.transform='scale(20)';
-    ripple.style.opacity='0';
-  },10);
-
-  setTimeout(()=>ripple.remove(),600);
-});
-</script>
+<footer>© SandhuWeb</footer>
 
 </body>
 </html>
