@@ -3,40 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SandhuWeb | Professional Website Development</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>SandhuWeb | Future Web Systems</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-:root{--primary:#38bdf8;--bg:#050a18;--card:#0b1220;--text:#e2e8f0}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:var(--bg);color:var(--text)}
+:root{
+--primary:#00f0ff;
+--bg:#020617;
+--glass:rgba(255,255,255,0.05);
+--text:#e6f7ff;
+}
 
-nav{display:flex;justify-content:space-between;padding:15px 40px;background:rgba(255,255,255,.05);position:sticky;top:0}
-nav h1{color:var(--primary)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Poppins',sans-serif;
+background:radial-gradient(circle at top,#020617,#000);
+color:var(--text);
+overflow-x:hidden;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+position:sticky;
+top:0;
+backdrop-filter:blur(15px);
+background:rgba(0,0,0,.4);
+border-bottom:1px solid rgba(255,255,255,.08)
+}
+nav h1{font-family:'Orbitron';color:var(--primary)}
 nav a{color:#aaa;margin-left:20px;text-decoration:none}
 nav a:hover{color:var(--primary)}
 
-.hero{padding:120px 40px;text-align:center;background:linear-gradient(120deg,#020617,#0b1220)}
-.hero h2{font-size:48px}
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+overflow:hidden
+}
+
+/* animated gradient bg */
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(270deg,#00f0ff,#0ea5e9,#00f0ff);
+background-size:600% 600%;
+animation:flow 10s ease infinite;
+opacity:.15
+}
+
+@keyframes flow{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.hero h2{
+font-size:52px;
+font-family:'Orbitron';
+letter-spacing:1px;
+}
 .hero span{color:var(--primary)}
-.hero p{margin:15px auto;max-width:600px;color:#aaa}
+.hero p{margin-top:15px;color:#aaa}
 
-.btn{display:inline-block;margin-top:20px;padding:12px 25px;border-radius:30px;background:var(--primary);color:#000;text-decoration:none}
+.btn{
+margin-top:25px;
+padding:14px 35px;
+border-radius:40px;
+background:linear-gradient(90deg,#00f0ff,#0ea5e9);
+color:#000;
+text-decoration:none;
+font-weight:600;
+transition:.3s
+}
+.btn:hover{transform:scale(1.08);box-shadow:0 0 25px #00f0ff}
 
-section{padding:70px 40px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:var(--card);padding:25px;border-radius:12px;transition:.3s}
-.card:hover{transform:translateY(-6px)}
+section{padding:80px 40px}
 
-.price{color:var(--primary);font-size:24px}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px
+}
 
-.footer-bar{position:fixed;bottom:0;width:100%;display:flex}
-.footer-bar a{flex:1;text-align:center;padding:15px;background:#0ea5e9;color:#000;text-decoration:none;font-weight:600}
-.footer-bar a:last-child{background:#25D366}
+.card{
+background:var(--glass);
+border:1px solid rgba(255,255,255,.08);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(20px);
+transition:.4s;
+position:relative;
+overflow:hidden
+}
 
-footer{text-align:center;padding:20px}
+.card::after{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(120deg,transparent,#00f0ff33,transparent);
+opacity:0;
+transition:.5s
+}
 
-@media(max-width:768px){.hero h2{font-size:32px}}
+.card:hover::after{opacity:1}
+.card:hover{transform:translateY(-10px) scale(1.03)}
+
+.price{color:var(--primary);font-size:28px}
+
+h2{margin-bottom:30px;font-family:'Orbitron'}
+
+.footer-bar{
+position:fixed;
+bottom:0;
+width:100%;
+display:flex;
+backdrop-filter:blur(10px)
+}
+.footer-bar a{
+flex:1;
+padding:15px;
+text-align:center;
+text-decoration:none;
+font-weight:600
+}
+.footer-bar a:first-child{background:#00f0ff;color:#000}
+.footer-bar a:last-child{background:#25D366;color:#000}
+
+footer{text-align:center;padding:20px;color:#666}
+
 </style>
 </head>
 
@@ -45,32 +146,33 @@ footer{text-align:center;padding:20px}
 <nav>
 <h1>SandhuWeb</h1>
 <div>
-<a href="#services">Services</a>
+<a href="#services">Systems</a>
 <a href="#why">Why</a>
-<a href="#contact">Contact</a>
+<a href="#contact">Connect</a>
 </div>
 </nav>
 
 <div class="hero">
-<h2><span>Fast</span> Website Development</h2>
-<p>Clean coded websites for business. Delivered in 7 days.</p>
-<a class="btn" href="tel:+919779300886">Call Now</a>
+<h2>Future <span>Web Systems</span><br>Built For 2030+</h2>
+<p>Ultra-fast coded platforms engineered for business dominance. Delivered in 7 days.</p>
+<a class="btn" href="tel:+919779300886">Initiate Call</a>
 </div>
 
 <section id="services">
-<h2>Pricing</h2>
+<h2>System Packages</h2>
 <div class="grid">
 <div class="card">
-<h3>Standard</h3>
+<h3>Core System</h3>
 <p class="price">₹7,000</p>
-<p>Responsive</p>
-<p>Fast</p>
+<p>Fast Architecture</p>
+<p>Mobile Optimized</p>
 </div>
-<div class="card" style="border:1px solid #38bdf8">
-<h3>Premium</h3>
+
+<div class="card" style="border:1px solid #00f0ff">
+<h3>Elite System</h3>
 <p class="price">₹10,000</p>
-<p>Advanced UI</p>
-<p>Full Support</p>
+<p>Advanced UI Layers</p>
+<p>Full Control</p>
 </div>
 </div>
 </section>
@@ -78,34 +180,36 @@ footer{text-align:center;padding:20px}
 <section id="why">
 <h2>Why SandhuWeb</h2>
 <div class="grid">
-<div class="card">Fast Delivery</div>
-<div class="card">Clean Code</div>
+<div class="card">Clean Code Systems</div>
+<div class="card">Ultra Speed Performance</div>
 <div class="card">No Hidden Cost</div>
+<div class="card">7 Day Deployment</div>
 </div>
 </section>
 
 <section>
-<h2>We Build For</h2>
+<h2>Deployment Types</h2>
 <div class="grid">
-<div class="card">Hotels</div>
-<div class="card">Shops</div>
-<div class="card">Business</div>
+<div class="card">Hotel Platforms</div>
+<div class="card">Shop Systems</div>
+<div class="card">Business Engines</div>
 </div>
 </section>
 
 <section>
-<h2>How It Works</h2>
+<h2>Execution Flow</h2>
 <div class="grid">
-<div class="card">Contact</div>
-<div class="card">Share Details</div>
-<div class="card">Get Website</div>
+<div class="card">Connect</div>
+<div class="card">Send Data</div>
+<div class="card">System Build</div>
+<div class="card">Launch</div>
 </div>
 </section>
 
 <section id="contact">
-<h2>Contact</h2>
+<h2>Connect</h2>
 <div class="card">
-<p>Phone: +91 9779300886</p>
+<p>+91 9779300886</p>
 <p>sandhuweb.com</p>
 </div>
 </section>
@@ -115,7 +219,7 @@ footer{text-align:center;padding:20px}
 <a href="https://wa.me/919779300886">WhatsApp</a>
 </div>
 
-<footer>© SandhuWeb</footer>
+<footer>© SandhuWeb Future Systems</footer>
 
 </body>
 </html>
