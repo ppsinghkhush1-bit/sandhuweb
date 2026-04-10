@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SandhuWeb | Web Design & Development</title>
+<title>SandhuWeb | Website Design & Development</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -26,7 +26,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ================= LIVE CODE BACKGROUND ================= */
+/* MATRIX BACKGROUND */
 canvas{
   position:fixed;
   top:0;
@@ -34,7 +34,6 @@ canvas{
   width:100%;
   height:100%;
   z-index:-1;
-  background:black;
 }
 
 /* NAV */
@@ -59,12 +58,10 @@ nav h1{
 .hero{
   text-align:center;
   padding:90px 20px;
-  max-width:900px;
-  margin:auto;
 }
 
 .hero h2{
-  font-size:44px;
+  font-size:42px;
   background:linear-gradient(90deg,#fff,#9ca3af);
   -webkit-background-clip:text;
   color:transparent;
@@ -72,12 +69,11 @@ nav h1{
 
 .hero p{
   color:#9ca3af;
-  margin-top:15px;
+  margin-top:10px;
 }
 
 /* BUTTON */
 .btn{
-  display:inline-block;
   padding:12px 20px;
   border-radius:30px;
   text-decoration:none;
@@ -91,7 +87,7 @@ nav h1{
   border:none;
 }
 
-/* SECTIONS */
+/* PRICING */
 section{
   padding:70px 20px;
 }
@@ -104,11 +100,9 @@ section{
 .subtitle{
   text-align:center;
   color:#9ca3af;
-  margin-top:10px;
   margin-bottom:40px;
 }
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -117,13 +111,12 @@ section{
   margin:auto;
 }
 
-/* CARD */
 .card{
   background:var(--card);
   border:1px solid var(--border);
   padding:25px;
   border-radius:18px;
-  backdrop-filter:blur(10px);
+  position:relative;
   transition:0.3s;
 }
 
@@ -132,7 +125,27 @@ section{
   border-color:var(--accent);
 }
 
-/* PRICING BUTTON FIX */
+.price{
+  font-size:18px;
+  color:var(--accent);
+  margin:10px 0;
+}
+
+ul{
+  list-style:none;
+}
+
+li{
+  padding:6px 0;
+  color:#cbd5e1;
+}
+
+li::before{
+  content:"✓ ";
+  color:var(--accent);
+}
+
+/* BUTTON */
 .price-btn{
   display:block;
   text-align:center;
@@ -145,7 +158,53 @@ section{
   color:white;
 }
 
-/* PROFILE SECTION */
+/* LIMITED OFFER BADGE */
+.offer-badge{
+  position:absolute;
+  top:-12px;
+  left:15px;
+  background:red;
+  color:white;
+  font-size:11px;
+  padding:5px 10px;
+  border-radius:20px;
+  font-weight:700;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+  100%{transform:scale(1);}
+}
+
+/* WHATSAPP FLOAT BUTTON */
+.whatsapp-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:60px;
+  height:60px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+  z-index:999;
+  animation:bounce 2s infinite;
+}
+
+.whatsapp-float img{
+  width:35px;
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+
+/* PROFILE */
 .profile{
   text-align:center;
 }
@@ -157,20 +216,8 @@ section{
   background:rgba(255,255,255,0.04);
   border:1px solid var(--border);
   border-radius:20px;
-  backdrop-filter:blur(10px);
 }
 
-.profile h3{
-  font-size:24px;
-  margin-bottom:10px;
-}
-
-.profile p{
-  color:#9ca3af;
-  line-height:1.6;
-}
-
-/* FOOTER */
 footer{
   text-align:center;
   padding:30px;
@@ -181,7 +228,6 @@ footer{
 
 <body>
 
-<!-- LIVE CODE BACKGROUND -->
 <canvas id="matrix"></canvas>
 
 <!-- NAV -->
@@ -190,87 +236,84 @@ footer{
 <div>
 <a href="#pricing">Pricing</a>
 <a href="#profile">Profile</a>
-<a href="#skills">Skills</a>
 </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-<h2>We Build Modern Websites That Convert</h2>
-<p>Fast, SEO optimized & high performance websites for businesses.</p>
+<h2>We Build High Converting Websites</h2>
+<p>Fast, SEO optimized & modern web solutions</p>
 <br>
-<a class="btn btn-primary" href="https://wa.me/919779300886">Contact Now</a>
+<a class="btn btn-primary" href="https://wa.me/919779300886">Get Started</a>
 </div>
 
 <!-- PRICING -->
 <section id="pricing">
-<h2 class="title">Pricing</h2>
-<p class="subtitle">Flexible pricing based on your project</p>
+<h2 class="title">Pricing Plans</h2>
+<p class="subtitle">Choose your best plan</p>
 
 <div class="grid">
 
   <div class="card">
-    <h3>Basic</h3>
-    <p>₹7,000</p>
+    <h3>Starter</h3>
+    <p class="price">₹7,000</p>
+    <ul>
+      <li>1 Page Website</li>
+      <li>Responsive Design</li>
+      <li>Basic SEO</li>
+      <li>1 Week Delivery</li>
+    </ul>
     <a class="price-btn" href="https://wa.me/919779300886">Contact Me</a>
   </div>
 
   <div class="card">
+    <span class="offer-badge">🔥 LIMITED OFFER</span>
     <h3>Premium</h3>
-    <p>Price: Based on Website Requirements</p>
+    <p class="price">Based on Requirements</p>
+    <ul>
+      <li>Premium UI/UX</li>
+      <li>Advanced Animations</li>
+      <li>SEO Optimization</li>
+      <li>Speed Optimization</li>
+      <li>WhatsApp Integration</li>
+      <li>3–5 Days Delivery</li>
+    </ul>
     <a class="price-btn" href="https://wa.me/919779300886">Contact Me</a>
   </div>
 
 </div>
 </section>
 
-<!-- PROFILE SECTION (NO PHOTO) -->
-<section id="profile" class="profile">
+<!-- PROFILE -->
+<section id="profile">
 <h2 class="title">Developer Profile</h2>
-<p class="subtitle">About the creator of SandhuWeb</p>
 
 <div class="profile-box">
   <h3>Khushwinder Singh</h3>
-  <p>
-    Full Stack Web Developer specializing in modern UI/UX, 
-    responsive design, SEO optimization, and high-converting business websites.  
-    Passionate about building fast, clean, and scalable web solutions.
-  </p>
+  <p>Full Stack Web Developer building modern, fast, and SEO optimized websites for businesses.</p>
 </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
-<h2 class="title">Skills</h2>
-<p class="subtitle">Technologies I work with</p>
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919779300886" class="whatsapp-float" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+</a>
 
-<div class="grid">
-  <div class="card">HTML / CSS / JS</div>
-  <div class="card">React / Next.js</div>
-  <div class="card">UI/UX Design</div>
-  <div class="card">SEO Optimization</div>
-  <div class="card">WordPress</div>
-  <div class="card">Performance Optimization</div>
-</div>
-</section>
-
-<footer>© 2026 SandhuWeb</footer>
-
-<!-- MATRIX CODE ANIMATION -->
+<!-- MATRIX -->
 <script>
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
 
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 
-let letters = "01HTMLCSSJAVASCRIPTWEBDEVUIUXSEO<>/{}[]";
-letters = letters.split("");
+let letters="01HTMLCSSJAVASCRIPT<>/{}[]";
+letters=letters.split("");
 
-const fontSize = 14;
-const columns = canvas.width / fontSize;
+const fontSize=14;
+const columns=canvas.width/fontSize;
+const drops=[];
 
-const drops = [];
 for(let x=0;x<columns;x++) drops[x]=1;
 
 function draw(){
@@ -284,9 +327,7 @@ function draw(){
     const text=letters[Math.floor(Math.random()*letters.length)];
     ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 
-    if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
-      drops[i]=0;
-    }
+    if(drops[i]*fontSize>canvas.height) drops[i]=0;
     drops[i]++;
   }
 }
