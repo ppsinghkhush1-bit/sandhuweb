@@ -21,7 +21,6 @@ website developer near me, best web developer India, website making service, web
 
 <link rel="canonical" href="https://sandhuweb.com/">
 
-<!-- Open Graph (SEO for social media) -->
 <meta property="og:title" content="SandhuWeb | Professional Website Design & Development">
 <meta property="og:description" content="High converting business websites, SEO optimized design, and modern web development services in India.">
 <meta property="og:type" content="website">
@@ -77,7 +76,7 @@ font-size:14px;
 
 nav a:hover{color:white}
 
-/* ✅ UPDATED HERO TEXT */
+/* HERO */
 .hero{
 padding:100px 20px;
 text-align:center;
@@ -93,7 +92,6 @@ background:linear-gradient(90deg,#fff,#9ca3af);
 color:transparent;
 }
 
-/* NEW PROFESSIONAL LINE */
 .hero p{
 color:#9ca3af;
 margin-top:15px;
@@ -123,7 +121,7 @@ color:white;
 border:none;
 }
 
-/* rest unchanged */
+/* SECTION BASE */
 section{
 padding:60px 20px;
 opacity:0;
@@ -156,7 +154,8 @@ padding:30px;
 color:#6b7280;
 }
 
-/* PRICING unchanged */
+/* ================= PRICING ================= */
+
 .pricing{
 text-align:center;
 padding:80px 20px;
@@ -271,6 +270,123 @@ padding:5px 10px;
 border-radius:20px;
 font-weight:700;
 }
+
+/* ================= WHY SECTION ================= */
+
+.why{
+text-align:center;
+padding:80px 20px;
+}
+
+.why-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+max-width:1100px;
+margin:auto;
+margin-top:40px;
+}
+
+.why-card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+padding:25px;
+border-radius:18px;
+text-align:left;
+backdrop-filter: blur(10px);
+transition:0.4s ease;
+}
+
+.why-card:hover{
+transform:translateY(-8px);
+border-color:rgba(34,211,238,0.4);
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+.icon{
+font-size:26px;
+margin-bottom:10px;
+}
+
+.why-card h3{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.why-card p{
+color:#9ca3af;
+font-size:14px;
+line-height:1.6;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+text-align:center;
+padding:80px 20px;
+}
+
+.contact-wrapper{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+max-width:900px;
+margin:auto;
+margin-top:40px;
+}
+
+.contact-card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+padding:30px;
+border-radius:18px;
+text-align:left;
+backdrop-filter: blur(10px);
+transition:0.4s ease;
+}
+
+.contact-card:hover{
+transform:translateY(-8px);
+border-color:rgba(34,211,238,0.4);
+}
+
+.contact-buttons{
+display:flex;
+gap:10px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.contact-btn{
+flex:1;
+text-align:center;
+padding:12px;
+border-radius:12px;
+text-decoration:none;
+font-weight:600;
+border:1px solid rgba(255,255,255,0.1);
+color:white;
+transition:0.3s;
+}
+
+.contact-btn.call{
+background:linear-gradient(135deg,#4f46e5,#22d3ee);
+border:none;
+}
+
+.contact-btn.whatsapp{
+border:1px solid #22d3ee;
+}
+
+.contact-btn:hover{
+transform:scale(1.03);
+}
+
+.small{
+font-size:13px;
+color:#9ca3af;
+margin-top:10px;
+}
 </style>
 </head>
 
@@ -285,13 +401,10 @@ font-weight:700;
 </div>
 </nav>
 
-<!-- ✅ UPDATED HERO TITLE -->
 <div class="hero">
 <h2>Professional Website Design & Development Services</h2>
-
 <p>
-We create modern, fast, SEO optimized websites, landing pages, business websites, and custom web development solutions
-that help your business grow online and convert visitors into customers.
+We build modern, fast, SEO-optimized websites, landing pages, and business solutions that help your brand grow and convert visitors into customers.
 </p>
 
 <div class="hero-buttons">
@@ -300,6 +413,7 @@ that help your business grow online and convert visitors into customers.
 </div>
 </div>
 
+<!-- PRICING -->
 <section id="services" class="pricing">
   <h2 class="section-title">Pricing Plans</h2>
   <p class="section-subtitle">Choose a plan that fits your business goals</p>
@@ -325,8 +439,8 @@ that help your business grow online and convert visitors into customers.
       <p class="price">₹10,000</p>
       <ul>
         <li>1 Page Website</li>
-        <li>Premium Design UI/UX</li>
-        <li>Advanced UI Animations</li>
+        <li>Premium UI/UX Design</li>
+        <li>Advanced Animations</li>
         <li>SEO Optimization</li>
         <li>Speed Optimization</li>
         <li>WhatsApp Integration</li>
@@ -338,21 +452,64 @@ that help your business grow online and convert visitors into customers.
   </div>
 </section>
 
-<section id="why">
-<h2>Why Choose Us</h2>
-<div class="grid">
-<div class="card">Fast Delivery</div>
-<div class="card">Clean Code</div>
-<div class="card">SEO Optimized</div>
-<div class="card">Support</div>
+<!-- WHY -->
+<section id="why" class="why">
+<h2 class="section-title">Why Choose Us</h2>
+<p class="section-subtitle">We focus on quality, performance, and results</p>
+
+<div class="why-grid">
+
+  <div class="why-card">
+    <div class="icon">⚡</div>
+    <h3>Fast Delivery</h3>
+    <p>High-quality websites delivered quickly with proper optimization.</p>
+  </div>
+
+  <div class="why-card">
+    <div class="icon">💎</div>
+    <h3>Premium Design</h3>
+    <p>Modern UI/UX that improves trust and customer conversion rate.</p>
+  </div>
+
+  <div class="why-card">
+    <div class="icon">🚀</div>
+    <h3>SEO Optimized</h3>
+    <p>Built with Google ranking structure and performance optimization.</p>
+  </div>
+
+  <div class="why-card">
+    <div class="icon">🤝</div>
+    <h3>Support</h3>
+    <p>We provide support even after delivery for smooth experience.</p>
+  </div>
+
 </div>
 </section>
 
-<section id="contact">
-<h2>Contact</h2>
-<div class="card">
-<p>+91 9779300886</p>
-<p>Punjab, India</p>
+<!-- CONTACT -->
+<section id="contact" class="contact">
+<h2 class="section-title">Let’s Build Your Website</h2>
+<p class="section-subtitle">Contact us instantly via call or WhatsApp</p>
+
+<div class="contact-wrapper">
+
+  <div class="contact-card">
+    <h3>Direct Contact</h3>
+    <p>📞 +91 9779300886</p>
+    <p>📍 Punjab, India</p>
+
+    <div class="contact-buttons">
+      <a href="tel:+919779300886" class="contact-btn call">Call Now</a>
+      <a href="https://wa.me/919779300886" class="contact-btn whatsapp">WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <h3>Quick Response</h3>
+    <p>We respond within minutes for urgent website projects.</p>
+    <p class="small">Start your project today 🚀</p>
+  </div>
+
 </div>
 </section>
 
