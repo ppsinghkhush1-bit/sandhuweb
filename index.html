@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SandhuWeb | Premium Web Systems</title>
 
+<meta name="description" content="SandhuWeb builds fast, modern, high-converting websites for businesses.">
+<meta name="keywords" content="web design, website development, Punjab web developer, SandhuWeb">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -26,7 +29,6 @@ scroll-behavior:smooth;
 overflow-x:hidden;
 }
 
-/* LIVE CODE BACKGROUND */
 .code-bg{
 position:fixed;
 top:0;
@@ -47,11 +49,10 @@ animation:fall linear infinite;
 }
 
 @keyframes fall{
-from{transform:translateY(-100px);}
-to{transform:translateY(110vh);}
+from{transform:translateY(-100px);} 
+to{transform:translateY(110vh);} 
 }
 
-/* NAV */
 nav{
 display:flex;
 justify-content:space-between;
@@ -59,8 +60,8 @@ align-items:center;
 padding:15px 30px;
 position:sticky;
 top:0;
-background:rgba(0,0,0,.5);
-backdrop-filter:blur(10px);
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(12px);
 border-bottom:1px solid var(--border);
 }
 
@@ -81,16 +82,15 @@ font-size:14px;
 
 nav a:hover{color:white}
 
-/* HERO */
 .hero{
-padding:90px 20px;
+padding:100px 20px;
 text-align:center;
 max-width:900px;
 margin:auto;
 }
 
 .hero h2{
-font-size:42px;
+font-size:48px;
 font-weight:700;
 background:linear-gradient(90deg,#fff,#9ca3af);
 -webkit-background-clip:text;
@@ -100,17 +100,17 @@ color:transparent;
 .hero p{
 margin-top:15px;
 color:#9ca3af;
+font-size:16px;
 }
 
 .hero-buttons{
-margin-top:25px;
+margin-top:30px;
 display:flex;
-gap:10px;
+gap:12px;
 justify-content:center;
 flex-wrap:wrap;
 }
 
-/* BUTTONS */
 .btn{
 padding:12px 25px;
 border-radius:30px;
@@ -132,9 +132,8 @@ border:none;
 
 .btn:hover{background:rgba(255,255,255,.05)}
 
-/* SECTIONS */
 section{
-padding:50px 20px;
+padding:60px 20px;
 opacity:0;
 transform:translateY(30px);
 transition:.6s;
@@ -146,49 +145,49 @@ transform:translateY(0);
 }
 
 h2{
-font-size:26px;
-margin-bottom:20px;
+font-size:28px;
+margin-bottom:25px;
+text-align:center;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
 }
 
-/* CARD */
 .card{
 background:var(--card);
 border:1px solid var(--border);
-padding:20px;
-border-radius:15px;
+padding:25px;
+border-radius:18px;
 transition:.3s;
+text-align:center;
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
 }
 
 .price{
-font-size:24px;
-margin:10px 0;
+font-size:26px;
+margin:12px 0;
 color:var(--accent);
 }
 
 .highlight{
 border:1px solid #22d3ee;
+box-shadow:0 0 20px rgba(34,211,238,0.2);
 }
 
-/* CTA */
 .cta{
 text-align:center;
 background:rgba(255,255,255,0.03);
-padding:60px 20px;
+padding:70px 20px;
 border-radius:20px;
-margin:20px;
+margin:30px;
 }
 
-/* FLOATING BUTTONS */
 .floating-contact{
 position:fixed;
 bottom:20px;
@@ -220,11 +219,11 @@ height:24px;
 
 .circle-btn:hover{transform:scale(1.15)}
 
-/* FOOTER */
 footer{
 text-align:center;
 padding:30px;
 color:#6b7280;
+font-size:14px;
 }
 
 </style>
@@ -232,7 +231,6 @@ color:#6b7280;
 
 <body>
 
-<!-- LIVE CODE BACKGROUND -->
 <div class="code-bg" id="codeBg"></div>
 
 <nav>
@@ -245,8 +243,8 @@ color:#6b7280;
 </nav>
 
 <div class="hero">
-<h2>Premium Websites That Drive Growth</h2>
-<p>Fast, modern, and conversion-focused websites.</p>
+<h2>Websites That Actually Bring Clients</h2>
+<p>High-performance websites designed to convert visitors into paying customers.</p>
 
 <div class="hero-buttons">
 <a class="btn btn-primary" href="tel:+919779300886">Call Now</a>
@@ -261,14 +259,16 @@ color:#6b7280;
 <div class="card">
 <h3>Standard</h3>
 <p class="price">₹7,000</p>
-<p>Responsive</p>
-<p>Fast</p>
+<p>1 Page Website</p>
+<p>Mobile Optimized</p>
+<p>Fast Loading</p>
 </div>
 
 <div class="card highlight">
 <h3>Premium</h3>
 <p class="price">₹10,000</p>
-<p>Advanced UI</p>
+<p>Modern UI/UX</p>
+<p>SEO Ready</p>
 <p>Full Support</p>
 </div>
 
@@ -276,40 +276,31 @@ color:#6b7280;
 </section>
 
 <section id="why">
-<h2>Why SandhuWeb</h2>
+<h2>Why Choose Me</h2>
 <div class="grid">
-<div class="card">Clean Code</div>
-<div class="card">Fast Delivery</div>
-<div class="card">No Hidden Cost</div>
-<div class="card">Client Focus</div>
+<div class="card">Clean Optimized Code</div>
+<div class="card">Delivery in 2-3 Days</div>
+<div class="card">No Hidden Charges</div>
+<div class="card">Direct WhatsApp Support</div>
 </div>
 </section>
 
 <section class="cta">
-<h2>Ready to Grow?</h2>
-<p>Get your professional website today.</p>
+<h2>Need a Website Fast?</h2>
+<p>I build and deliver quickly so you can start getting clients.</p>
 <br>
 <a class="btn btn-primary" href="tel:+919779300886">Start Now</a>
-</section>
-
-<section>
-<h2>About</h2>
-<div class="card">
-<p><b>Name:</b> Khushwinder Singh</p>
-<p><b>Location:</b> Punjab, India</p>
-<p><b>Skills:</b> HTML, CSS, JavaScript, UI/UX</p>
-</div>
 </section>
 
 <section id="contact">
 <h2>Contact</h2>
 <div class="card">
+<p><b>Name:</b> Khushwinder Singh</p>
 <p><b>Phone:</b> +91 9779300886</p>
-<p>sandhuweb.com</p>
+<p><b>Location:</b> Punjab, India</p>
 </div>
 </section>
 
-<!-- FLOATING BUTTONS -->
 <div class="floating-contact">
 <a href="tel:+919779300886" class="circle-btn call">
 <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png">
@@ -320,10 +311,9 @@ color:#6b7280;
 </a>
 </div>
 
-<footer>© SandhuWeb</footer>
+<footer>© 2026 SandhuWeb. All rights reserved.</footer>
 
 <script>
-/* SCROLL ANIMATION */
 const sections = document.querySelectorAll('section');
 
 window.addEventListener('scroll', () => {
@@ -335,7 +325,6 @@ sec.classList.add('show');
 });
 });
 
-/* CODE BACKGROUND */
 const codeBg = document.getElementById("codeBg");
 
 const codes = [
