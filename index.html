@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SandhuWeb | Website Design & Development</title>
+<title>SandhuWeb | Premium Web Design & Development</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -12,13 +12,18 @@
 :root{
   --primary:#4f46e5;
   --accent:#22d3ee;
-  --bg:#020617;
+  --bg:#000;
   --card:rgba(255,255,255,0.05);
   --border:rgba(255,255,255,0.08);
   --text:#e5e7eb;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
 
 body{
   background:#000;
@@ -26,7 +31,7 @@ body{
   overflow-x:hidden;
 }
 
-/* MATRIX BACKGROUND */
+/* ===== MATRIX BACKGROUND (READABLE FIXED) ===== */
 canvas{
   position:fixed;
   top:0;
@@ -36,16 +41,18 @@ canvas{
   z-index:-1;
 }
 
-/* NAV */
+/* ===== NAV ===== */
 nav{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   padding:15px 30px;
   position:sticky;
   top:0;
   background:rgba(0,0,0,0.6);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--border);
+  z-index:1000;
 }
 
 nav h1{
@@ -54,32 +61,63 @@ nav h1{
   color:transparent;
 }
 
-/* HERO */
+nav a{
+  margin-left:15px;
+  text-decoration:none;
+  color:#9ca3af;
+  font-size:14px;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#fff;
+}
+
+/* ===== MULTI PAGE STYLE ===== */
+section{
+  min-height:100vh;
+  padding:80px 20px;
+  display:none;
+  animation:fade 0.5s ease;
+}
+
+section.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ===== HERO ===== */
 .hero{
   text-align:center;
-  padding:90px 20px;
+  max-width:800px;
+  margin:auto;
 }
 
 .hero h2{
-  font-size:42px;
+  font-size:44px;
   background:linear-gradient(90deg,#fff,#9ca3af);
   -webkit-background-clip:text;
   color:transparent;
 }
 
 .hero p{
+  margin-top:15px;
   color:#9ca3af;
-  margin-top:10px;
 }
 
-/* BUTTON */
 .btn{
+  display:inline-block;
   padding:12px 20px;
   border-radius:30px;
   text-decoration:none;
   font-weight:600;
   color:white;
   border:1px solid var(--border);
+  margin-top:20px;
 }
 
 .btn-primary{
@@ -87,11 +125,7 @@ nav h1{
   border:none;
 }
 
-/* PRICING */
-section{
-  padding:70px 20px;
-}
-
+/* ===== TITLES ===== */
 .title{
   text-align:center;
   font-size:32px;
@@ -103,6 +137,7 @@ section{
   margin-bottom:40px;
 }
 
+/* ===== GRID ===== */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -111,12 +146,13 @@ section{
   margin:auto;
 }
 
+/* ===== CARDS ===== */
 .card{
   background:var(--card);
   border:1px solid var(--border);
   padding:25px;
   border-radius:18px;
-  position:relative;
+  backdrop-filter:blur(10px);
   transition:0.3s;
 }
 
@@ -125,15 +161,14 @@ section{
   border-color:var(--accent);
 }
 
+/* ===== PRICING ===== */
 .price{
-  font-size:18px;
   color:var(--accent);
+  font-size:18px;
   margin:10px 0;
 }
 
-ul{
-  list-style:none;
-}
+ul{list-style:none}
 
 li{
   padding:6px 0;
@@ -145,41 +180,24 @@ li::before{
   color:var(--accent);
 }
 
-/* BUTTON */
-.price-btn{
-  display:block;
-  text-align:center;
-  margin-top:15px;
-  padding:12px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:600;
-  background:linear-gradient(135deg,#4f46e5,#22d3ee);
-  color:white;
-}
-
-/* LIMITED OFFER BADGE */
-.offer-badge{
-  position:absolute;
-  top:-12px;
-  left:15px;
+/* ===== LIMITED OFFER BADGE ===== */
+.offer{
   background:red;
   color:white;
   font-size:11px;
   padding:5px 10px;
   border-radius:20px;
-  font-weight:700;
+  display:inline-block;
+  margin-bottom:10px;
   animation:pulse 1.5s infinite;
 }
 
 @keyframes pulse{
-  0%{transform:scale(1);}
   50%{transform:scale(1.1);}
-  100%{transform:scale(1);}
 }
 
-/* WHATSAPP FLOAT BUTTON */
-.whatsapp-float{
+/* ===== WHATSAPP BUTTON ===== */
+.whatsapp{
   position:fixed;
   bottom:20px;
   right:20px;
@@ -190,25 +208,15 @@ li::before{
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 10px 20px rgba(0,0,0,0.3);
   z-index:999;
-  animation:bounce 2s infinite;
+  box-shadow:0 10px 20px rgba(0,0,0,0.4);
 }
 
-.whatsapp-float img{
+.whatsapp img{
   width:35px;
 }
 
-@keyframes bounce{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-6px);}
-}
-
-/* PROFILE */
-.profile{
-  text-align:center;
-}
-
+/* ===== PROFILE ===== */
 .profile-box{
   max-width:600px;
   margin:auto;
@@ -216,41 +224,40 @@ li::before{
   background:rgba(255,255,255,0.04);
   border:1px solid var(--border);
   border-radius:20px;
-}
-
-footer{
   text-align:center;
-  padding:30px;
-  color:#6b7280;
 }
 </style>
 </head>
 
 <body>
 
+<!-- MATRIX BACKGROUND -->
 <canvas id="matrix"></canvas>
 
 <!-- NAV -->
 <nav>
 <h1>SandhuWeb</h1>
 <div>
-<a href="#pricing">Pricing</a>
-<a href="#profile">Profile</a>
+<a href="#" onclick="show('home')">Home</a>
+<a href="#" onclick="show('pricing')">Pricing</a>
+<a href="#" onclick="show('services')">Services</a>
+<a href="#" onclick="show('profile')">Profile</a>
 </div>
 </nav>
 
-<!-- HERO -->
+<!-- HOME -->
+<section id="home" class="active">
 <div class="hero">
 <h2>We Build High Converting Websites</h2>
-<p>Fast, SEO optimized & modern web solutions</p>
-<br>
+<p>Fast, SEO optimized and modern websites for businesses</p>
 <a class="btn btn-primary" href="https://wa.me/919779300886">Get Started</a>
 </div>
+</section>
 
 <!-- PRICING -->
 <section id="pricing">
 <h2 class="title">Pricing Plans</h2>
-<p class="subtitle">Choose your best plan</p>
+<p class="subtitle">Choose the best plan for your business</p>
 
 <div class="grid">
 
@@ -263,24 +270,37 @@ footer{
       <li>Basic SEO</li>
       <li>1 Week Delivery</li>
     </ul>
-    <a class="price-btn" href="https://wa.me/919779300886">Contact Me</a>
+    <a class="btn btn-primary" href="https://wa.me/919779300886">Contact Me</a>
   </div>
 
   <div class="card">
-    <span class="offer-badge">🔥 LIMITED OFFER</span>
+    <span class="offer">🔥 LIMITED OFFER</span>
     <h3>Premium</h3>
     <p class="price">Based on Requirements</p>
     <ul>
-      <li>Premium UI/UX</li>
+      <li>Premium UI/UX Design</li>
       <li>Advanced Animations</li>
       <li>SEO Optimization</li>
       <li>Speed Optimization</li>
       <li>WhatsApp Integration</li>
       <li>3–5 Days Delivery</li>
     </ul>
-    <a class="price-btn" href="https://wa.me/919779300886">Contact Me</a>
+    <a class="btn btn-primary" href="https://wa.me/919779300886">Contact Me</a>
   </div>
 
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<h2 class="title">Services</h2>
+<p class="subtitle">What I offer</p>
+
+<div class="grid">
+<div class="card">Website Design</div>
+<div class="card">Web Development</div>
+<div class="card">SEO Optimization</div>
+<div class="card">Landing Pages</div>
 </div>
 </section>
 
@@ -289,17 +309,17 @@ footer{
 <h2 class="title">Developer Profile</h2>
 
 <div class="profile-box">
-  <h3>Khushwinder Singh</h3>
-  <p>Full Stack Web Developer building modern, fast, and SEO optimized websites for businesses.</p>
+<h3>Khushwinder Singh</h3>
+<p>Full Stack Web Developer building modern, fast, SEO optimized websites for businesses.</p>
 </div>
 </section>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/919779300886" class="whatsapp-float" target="_blank">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+<a class="whatsapp" href="https://wa.me/919779300886">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
 
-<!-- MATRIX -->
+<!-- MATRIX SCRIPT (READABLE VERSION) -->
 <script>
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
@@ -307,20 +327,20 @@ const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 
-let letters="01HTMLCSSJAVASCRIPT<>/{}[]";
+let letters="01HTMLCSSJAVASCRIPTWEBDEVUIUXSEO<>/{}[]";
 letters=letters.split("");
 
 const fontSize=14;
 const columns=canvas.width/fontSize;
 const drops=[];
 
-for(let x=0;x<columns;x++) drops[x]=1;
+for(let i=0;i<columns;i++) drops[i]=1;
 
 function draw(){
-  ctx.fillStyle="rgba(0,0,0,0.05)";
+  ctx.fillStyle="rgba(255,255,255,0.04)";
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  ctx.fillStyle="#22d3ee";
+  ctx.fillStyle="#0f172a";
   ctx.font=fontSize+"px monospace";
 
   for(let i=0;i<drops.length;i++){
@@ -333,6 +353,16 @@ function draw(){
 }
 
 setInterval(draw,35);
+</script>
+
+<!-- PAGE SWITCH -->
+<script>
+function show(id){
+  document.querySelectorAll("section").forEach(s=>{
+    s.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+}
 </script>
 
 </body>
