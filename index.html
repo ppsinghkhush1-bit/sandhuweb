@@ -4,408 +4,239 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SandhuWeb | Website Design & Web Development Services India</title>
+<title>SandhuWeb | Website Design & Development Services India</title>
 
-<meta name="description" content="SandhuWeb offers professional website design, web development, SEO optimization, landing pages, and business websites in India. High converting modern websites for startups and businesses.">
-
-<meta name="keywords" content="
-website design, web development, website development India, website designer Punjab, freelance web developer India,
-business website, landing page design, SEO optimized website, responsive website design,
-modern website development, UI UX design website, custom website development, small business website,
-affordable website design India, ecommerce website development, portfolio website design,
-website developer near me, best web developer India, website making service, web design company India
-">
-
+<meta name="description" content="SandhuWeb offers modern website design, web development, SEO optimization, and business websites in India.">
+<meta name="keywords" content="website design India, web development, SEO optimized websites, landing pages, business website">
 <meta name="robots" content="index, follow">
-<meta name="author" content="Khushwinder Singh">
-
-<link rel="canonical" href="https://sandhuweb.com/">
-
-<meta property="og:title" content="SandhuWeb | Professional Website Design & Development">
-<meta property="og:description" content="High converting business websites, SEO optimized design, and modern web development services in India.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://sandhuweb.com/">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
---primary:#4f46e5;
---accent:#22d3ee;
---bg:#020617;
---card:rgba(255,255,255,0.04);
---border:rgba(255,255,255,0.08);
---text:#e5e7eb;
+  --primary:#4f46e5;
+  --accent:#22d3ee;
+  --bg:#020617;
+  --card:rgba(255,255,255,0.04);
+  --border:rgba(255,255,255,0.08);
+  --text:#e5e7eb;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
 
 body{
-background:radial-gradient(circle at top,#020617,#000);
-color:var(--text);
-scroll-behavior:smooth;
-overflow-x:hidden;
+  background:radial-gradient(circle at top,#020617,#000);
+  color:var(--text);
 }
 
+/* NAV */
 nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 30px;
-position:sticky;
-top:0;
-background:rgba(0,0,0,.6);
-backdrop-filter:blur(12px);
-border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  position:sticky;
+  top:0;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
 }
 
 nav h1{
-font-size:20px;
-font-weight:700;
-background:linear-gradient(90deg,#4f46e5,#22d3ee);
--webkit-background-clip:text;
-color:transparent;
+  font-size:20px;
+  font-weight:700;
+  background:linear-gradient(90deg,#4f46e5,#22d3ee);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
 nav a{
-margin-left:20px;
-text-decoration:none;
-color:#9ca3af;
-font-size:14px;
+  margin-left:20px;
+  text-decoration:none;
+  color:#9ca3af;
+  font-size:14px;
 }
-
-nav a:hover{color:white}
 
 /* HERO */
 .hero{
-padding:100px 20px;
-text-align:center;
-max-width:900px;
-margin:auto;
+  padding:100px 20px;
+  text-align:center;
+  max-width:900px;
+  margin:auto;
 }
 
 .hero h2{
-font-size:48px;
-font-weight:700;
-background:linear-gradient(90deg,#fff,#9ca3af);
--webkit-background-clip:text;
-color:transparent;
+  font-size:48px;
+  font-weight:700;
+  background:linear-gradient(90deg,#fff,#9ca3af);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
 .hero p{
-color:#9ca3af;
-margin-top:15px;
-font-size:16px;
-line-height:1.6;
+  color:#9ca3af;
+  margin-top:15px;
+  font-size:16px;
 }
 
+/* BUTTONS */
 .hero-buttons{
-margin-top:30px;
-display:flex;
-gap:12px;
-justify-content:center;
-flex-wrap:wrap;
+  margin-top:30px;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
 }
 
 .btn{
-padding:12px 25px;
-border-radius:30px;
-text-decoration:none;
-font-weight:600;
-border:1px solid var(--border);
+  padding:12px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  border:1px solid var(--border);
+  color:white;
 }
 
 .btn-primary{
-background:linear-gradient(135deg,#4f46e5,#22d3ee);
-color:white;
-border:none;
+  background:linear-gradient(135deg,#4f46e5,#22d3ee);
+  border:none;
 }
 
-/* SECTION BASE */
+/* SECTIONS */
 section{
-padding:60px 20px;
-opacity:0;
-transform:translateY(30px);
-transition:.6s;
-}
-
-section.show{
-opacity:1;
-transform:translateY(0);
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
-}
-
-.card{
-background:var(--card);
-border:1px solid var(--border);
-padding:25px;
-border-radius:18px;
-text-align:center;
-}
-
-footer{
-text-align:center;
-padding:30px;
-color:#6b7280;
-}
-
-/* ================= PRICING ================= */
-
-.pricing{
-text-align:center;
-padding:80px 20px;
+  padding:70px 20px;
 }
 
 .section-title{
-font-size:38px;
-font-weight:700;
+  font-size:34px;
+  text-align:center;
+  font-weight:700;
 }
 
 .section-subtitle{
-color:#9ca3af;
-margin-top:10px;
-margin-bottom:40px;
+  text-align:center;
+  color:#9ca3af;
+  margin-top:10px;
+  margin-bottom:40px;
 }
 
+/* PRICING */
 .pricing-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-max-width:900px;
-margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+  max-width:900px;
+  margin:auto;
 }
 
 .price-card{
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:20px;
-padding:30px 25px;
-text-align:left;
-transition:0.4s ease;
-position:relative;
-backdrop-filter: blur(10px);
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px;
+  transition:0.3s;
+  position:relative;
 }
 
 .price-card:hover{
-transform:translateY(-10px);
-border-color:rgba(34,211,238,0.4);
-box-shadow:0 20px 40px rgba(0,0,0,0.4);
-}
-
-.price-card h3{
-font-size:20px;
-margin-bottom:10px;
-}
-
-.price{
-font-size:32px;
-font-weight:700;
-background:linear-gradient(90deg,#4f46e5,#22d3ee);
--webkit-background-clip:text;
-color:transparent;
-margin-bottom:15px;
-}
-
-.price-card ul{
-list-style:none;
-margin:20px 0;
-}
-
-.price-card ul li{
-margin:10px 0;
-color:#cbd5e1;
-font-size:14px;
-position:relative;
-padding-left:18px;
-}
-
-.price-card ul li::before{
-content:"✓";
-position:absolute;
-left:0;
-color:#22d3ee;
-font-weight:bold;
-}
-
-.price-btn{
-display:block;
-text-align:center;
-padding:12px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,0.1);
-text-decoration:none;
-color:white;
-font-weight:600;
-margin-top:10px;
-transition:0.3s;
-}
-
-.price-btn:hover{
-border-color:#22d3ee;
-}
-
-.price-btn.primary{
-background:linear-gradient(135deg,#4f46e5,#22d3ee);
-border:none;
+  transform:translateY(-10px);
+  border-color:var(--accent);
 }
 
 .featured{
-border:1px solid rgba(34,211,238,0.5);
-transform:scale(1.05);
+  border:1px solid var(--accent);
+  transform:scale(1.05);
 }
 
 .badge{
-position:absolute;
-top:15px;
-right:15px;
-background:#22d3ee;
-color:#000;
-font-size:12px;
-padding:5px 10px;
-border-radius:20px;
-font-weight:700;
+  position:absolute;
+  top:15px;
+  right:15px;
+  background:var(--accent);
+  color:#000;
+  padding:5px 10px;
+  font-size:12px;
+  border-radius:20px;
+  font-weight:700;
 }
 
-/* ================= WHY SECTION ================= */
-
-.why{
-text-align:center;
-padding:80px 20px;
+.price-card h3{
+  font-size:20px;
 }
 
-.why-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
-max-width:1100px;
-margin:auto;
-margin-top:40px;
+.price{
+  font-size:18px;
+  margin:10px 0;
+  color:#22d3ee;
+  font-weight:600;
 }
 
-.why-card{
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.08);
-padding:25px;
-border-radius:18px;
-text-align:left;
-backdrop-filter: blur(10px);
-transition:0.4s ease;
+.price-card ul{
+  list-style:none;
+  margin:20px 0;
 }
 
-.why-card:hover{
-transform:translateY(-8px);
-border-color:rgba(34,211,238,0.4);
-box-shadow:0 20px 40px rgba(0,0,0,0.4);
+.price-card ul li{
+  padding:8px 0;
+  color:#cbd5e1;
+  font-size:14px;
 }
 
-.icon{
-font-size:26px;
-margin-bottom:10px;
+.price-card ul li::before{
+  content:"✓ ";
+  color:var(--accent);
 }
 
-.why-card h3{
-font-size:18px;
-margin-bottom:10px;
+/* BUTTON */
+.price-btn{
+  display:block;
+  text-align:center;
+  padding:12px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  color:white;
+  border:1px solid var(--border);
 }
 
-.why-card p{
-color:#9ca3af;
-font-size:14px;
-line-height:1.6;
+.price-btn.primary{
+  background:linear-gradient(135deg,#4f46e5,#22d3ee);
+  border:none;
 }
 
-/* ================= CONTACT ================= */
-
+/* CONTACT */
 .contact{
-text-align:center;
-padding:80px 20px;
+  text-align:center;
 }
 
-.contact-wrapper{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-max-width:900px;
-margin:auto;
-margin-top:40px;
-}
-
-.contact-card{
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.08);
-padding:30px;
-border-radius:18px;
-text-align:left;
-backdrop-filter: blur(10px);
-transition:0.4s ease;
-}
-
-.contact-card:hover{
-transform:translateY(-8px);
-border-color:rgba(34,211,238,0.4);
-}
-
-.contact-buttons{
-display:flex;
-gap:10px;
-margin-top:20px;
-flex-wrap:wrap;
-}
-
-.contact-btn{
-flex:1;
-text-align:center;
-padding:12px;
-border-radius:12px;
-text-decoration:none;
-font-weight:600;
-border:1px solid rgba(255,255,255,0.1);
-color:white;
-transition:0.3s;
-}
-
-.contact-btn.call{
-background:linear-gradient(135deg,#4f46e5,#22d3ee);
-border:none;
-}
-
-.contact-btn.whatsapp{
-border:1px solid #22d3ee;
-}
-
-.contact-btn:hover{
-transform:scale(1.03);
-}
-
-.small{
-font-size:13px;
-color:#9ca3af;
-margin-top:10px;
+footer{
+  text-align:center;
+  padding:30px;
+  color:#6b7280;
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
 <h1>SandhuWeb</h1>
 <div>
-<a href="#services">Services</a>
-<a href="#why">Why</a>
+<a href="#services">Pricing</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-<h2>Professional Website Design & Development Services</h2>
-<p>
-We build modern, fast, SEO-optimized websites, landing pages, and business solutions that help your brand grow and convert visitors into customers.
-</p>
+<h2>Modern Websites That Grow Your Business</h2>
+<p>We build fast, SEO optimized, high converting websites for your brand.</p>
 
 <div class="hero-buttons">
 <a class="btn btn-primary" href="tel:+919779300886">Call Now</a>
@@ -414,73 +245,48 @@ We build modern, fast, SEO-optimized websites, landing pages, and business solut
 </div>
 
 <!-- PRICING -->
-<section id="services" class="pricing">
-  <h2 class="section-title">Pricing Plans</h2>
-  <p class="section-subtitle">Choose a plan that fits your business goals</p>
+<section id="services">
+<h2 class="section-title">Pricing Plans</h2>
+<p class="section-subtitle">Choose your perfect plan</p>
 
-  <div class="pricing-grid">
+<div class="pricing-grid">
 
-    <div class="price-card">
-      <h3>Basic</h3>
-      <p class="price">₹7,000</p>
-      <ul>
-        <li>1 Page Website</li>
-        <li>Basic Design Focused Website</li>
-        <li>Mobile Responsive</li>
-        <li>Basic SEO Setup</li>
-        <li>1 Week Delivery</li>
-      </ul>
-      <a href="tel:+919779300886" class="price-btn">Get Started</a>
-    </div>
+  <!-- BASIC -->
+  <div class="price-card">
+    <h3>Basic</h3>
+    <p class="price">₹7,000</p>
 
-    <div class="price-card featured">
-      <div class="badge">Most Popular</div>
-      <h3>Advanced</h3>
-      <p class="price">Based on Website Requirements</p>
-      <ul>
-        <li>1 Page Website</li>
-        <li>Premium UI/UX Design</li>
-        <li>Advanced Animations</li>
-        <li>SEO Optimization</li>
-        <li>Speed Optimization</li>
-        <li>WhatsApp Integration</li>
-        <li>3–5 Days Delivery</li>
-      </ul>
-      <a href="https://wa.me/919779300886" class="price-btn primary">Choose Premium</a>
-    </div>
+    <ul>
+      <li>1 Page Website</li>
+      <li>Responsive Design</li>
+      <li>Basic SEO Setup</li>
+      <li>Speed Optimized</li>
+      <li>1 Week Delivery</li>
+    </ul>
 
-  </div>
-</section>
-
-<!-- WHY -->
-<section id="why" class="why">
-<h2 class="section-title">Why Choose Us</h2>
-<p class="section-subtitle">We focus on quality, performance, and results</p>
-
-<div class="why-grid">
-
-  <div class="why-card">
-    <div class="icon">⚡</div>
-    <h3>Fast Delivery</h3>
-    <p>High-quality websites delivered quickly with proper optimization.</p>
+    <a href="tel:+919779300886" class="price-btn">Get Started</a>
   </div>
 
-  <div class="why-card">
-    <div class="icon">💎</div>
-    <h3>Premium Design</h3>
-    <p>Modern UI/UX that improves trust and customer conversion rate.</p>
-  </div>
+  <!-- PREMIUM -->
+  <div class="price-card featured">
+    <div class="badge">Most Popular</div>
 
-  <div class="why-card">
-    <div class="icon">🚀</div>
-    <h3>SEO Optimized</h3>
-    <p>Built with Google ranking structure and performance optimization.</p>
-  </div>
+    <h3>Advanced</h3>
 
-  <div class="why-card">
-    <div class="icon">🤝</div>
-    <h3>Support</h3>
-    <p>We provide support even after delivery for smooth experience.</p>
+    <p class="price">Price: Based on Website Requirements</p>
+
+    <ul>
+      <li>Premium UI/UX Design</li>
+      <li>Advanced Animations</li>
+      <li>SEO Optimization</li>
+      <li>Speed Optimization</li>
+      <li>WhatsApp Integration</li>
+      <li>3–5 Days Delivery</li>
+    </ul>
+
+    <a href="https://wa.me/919779300886" class="price-btn primary">
+      Get Quote
+    </a>
   </div>
 
 </div>
@@ -488,43 +294,16 @@ We build modern, fast, SEO-optimized websites, landing pages, and business solut
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
-<h2 class="section-title">Let’s Build Your Website</h2>
-<p class="section-subtitle">Contact us instantly via call or WhatsApp</p>
+<h2 class="section-title">Contact Us</h2>
+<p class="section-subtitle">Let’s build your website</p>
 
-<div class="contact-wrapper">
-
-  <div class="contact-card">
-    <h3>Direct Contact</h3>
-    <p>📞 +91 9779300886</p>
-    <p>📍 Punjab, India</p>
-
-    <div class="contact-buttons">
-      <a href="tel:+919779300886" class="contact-btn call">Call Now</a>
-      <a href="https://wa.me/919779300886" class="contact-btn whatsapp">WhatsApp</a>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <h3>Quick Response</h3>
-    <p>We respond within minutes for urgent website projects.</p>
-    <p class="small">Start your project today 🚀</p>
-  </div>
-
+<div class="hero-buttons">
+<a class="btn btn-primary" href="tel:+919779300886">Call Now</a>
+<a class="btn btn-primary" href="https://wa.me/919779300886">WhatsApp</a>
 </div>
 </section>
 
 <footer>© 2026 SandhuWeb</footer>
-
-<script>
-const sections=document.querySelectorAll("section");
-window.addEventListener("scroll",()=>{
-sections.forEach(s=>{
-if(s.getBoundingClientRect().top<window.innerHeight-100){
-s.classList.add("show");
-}
-});
-});
-</script>
 
 </body>
 </html>
