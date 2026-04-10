@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SandhuWeb | Website Design & Development Services</title>
+<title>SandhuWeb | Web Design & Development</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -13,7 +13,7 @@
   --primary:#4f46e5;
   --accent:#22d3ee;
   --bg:#020617;
-  --card:rgba(255,255,255,0.04);
+  --card:rgba(255,255,255,0.05);
   --border:rgba(255,255,255,0.08);
   --text:#e5e7eb;
 }
@@ -21,20 +21,31 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 
 body{
-  background:radial-gradient(circle at top,#020617,#000);
+  background:#000;
   color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ================= LIVE CODE BACKGROUND ================= */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  background:black;
 }
 
 /* NAV */
 nav{
   display:flex;
   justify-content:space-between;
-  align-items:center;
   padding:15px 30px;
   position:sticky;
   top:0;
   background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(10px);
   border-bottom:1px solid var(--border);
 }
 
@@ -42,26 +53,18 @@ nav h1{
   background:linear-gradient(90deg,#4f46e5,#22d3ee);
   -webkit-background-clip:text;
   color:transparent;
-  font-size:20px;
-}
-
-nav a{
-  margin-left:20px;
-  text-decoration:none;
-  color:#9ca3af;
-  font-size:14px;
 }
 
 /* HERO */
 .hero{
-  padding:90px 20px;
   text-align:center;
+  padding:90px 20px;
   max-width:900px;
   margin:auto;
 }
 
 .hero h2{
-  font-size:46px;
+  font-size:44px;
   background:linear-gradient(90deg,#fff,#9ca3af);
   -webkit-background-clip:text;
   color:transparent;
@@ -72,9 +75,10 @@ nav a{
   margin-top:15px;
 }
 
-/* BUTTONS */
+/* BUTTON */
 .btn{
-  padding:12px 22px;
+  display:inline-block;
+  padding:12px 20px;
   border-radius:30px;
   text-decoration:none;
   font-weight:600;
@@ -93,8 +97,8 @@ section{
 }
 
 .title{
-  font-size:32px;
   text-align:center;
+  font-size:32px;
 }
 
 .subtitle{
@@ -119,6 +123,7 @@ section{
   border:1px solid var(--border);
   padding:25px;
   border-radius:18px;
+  backdrop-filter:blur(10px);
   transition:0.3s;
 }
 
@@ -127,45 +132,42 @@ section{
   border-color:var(--accent);
 }
 
-/* PRICING */
-.price{
-  font-size:20px;
-  color:var(--accent);
-  margin:10px 0;
+/* PRICING BUTTON FIX */
+.price-btn{
+  display:block;
+  text-align:center;
+  margin-top:15px;
+  padding:12px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  background:linear-gradient(135deg,#4f46e5,#22d3ee);
+  color:white;
 }
 
-ul{
-  list-style:none;
+/* PROFILE SECTION */
+.profile{
+  text-align:center;
 }
 
-li{
-  padding:6px 0;
-  color:#cbd5e1;
-}
-
-li::before{
-  content:"✓ ";
-  color:var(--accent);
-}
-
-/* BADGE */
-.badge{
-  background:var(--accent);
-  color:#000;
-  padding:5px 10px;
-  font-size:12px;
+.profile-box{
+  max-width:600px;
+  margin:auto;
+  padding:30px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);
   border-radius:20px;
-  display:inline-block;
+  backdrop-filter:blur(10px);
+}
+
+.profile h3{
+  font-size:24px;
   margin-bottom:10px;
 }
 
-/* OWNER */
-.owner-img{
-  width:100px;
-  height:100px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#4f46e5,#22d3ee);
-  margin-bottom:15px;
+.profile p{
+  color:#9ca3af;
+  line-height:1.6;
 }
 
 /* FOOTER */
@@ -179,127 +181,118 @@ footer{
 
 <body>
 
+<!-- LIVE CODE BACKGROUND -->
+<canvas id="matrix"></canvas>
+
 <!-- NAV -->
 <nav>
 <h1>SandhuWeb</h1>
 <div>
 <a href="#pricing">Pricing</a>
-<a href="#why">Why</a>
+<a href="#profile">Profile</a>
 <a href="#skills">Skills</a>
-<a href="#owner">Owner</a>
 </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-<h2>Modern Websites That Grow Your Business</h2>
-<p>High converting, fast and SEO optimized websites for your brand.</p>
+<h2>We Build Modern Websites That Convert</h2>
+<p>Fast, SEO optimized & high performance websites for businesses.</p>
 <br>
-<a class="btn btn-primary" href="https://wa.me/919779300886">Get Started</a>
+<a class="btn btn-primary" href="https://wa.me/919779300886">Contact Now</a>
 </div>
 
 <!-- PRICING -->
 <section id="pricing">
-<h2 class="title">Pricing Plans</h2>
-<p class="subtitle">Choose the best plan for your business</p>
+<h2 class="title">Pricing</h2>
+<p class="subtitle">Flexible pricing based on your project</p>
 
 <div class="grid">
 
   <div class="card">
     <h3>Basic</h3>
-    <p class="price">₹7,000</p>
-    <ul>
-      <li>1 Page Website</li>
-      <li>Responsive Design</li>
-      <li>Basic SEO</li>
-      <li>1 Week Delivery</li>
-    </ul>
+    <p>₹7,000</p>
+    <a class="price-btn" href="https://wa.me/919779300886">Contact Me</a>
   </div>
 
   <div class="card">
-    <span class="badge">Most Popular</span>
-    <h3>Advanced</h3>
-    <p class="price">Price: Based on Website Requirements</p>
-    <ul>
-      <li>Premium UI/UX Design</li>
-      <li>Advanced Animations</li>
-      <li>SEO Optimization</li>
-      <li>Speed Optimization</li>
-      <li>WhatsApp Integration</li>
-      <li>3–5 Days Delivery</li>
-    </ul>
+    <h3>Premium</h3>
+    <p>Price: Based on Website Requirements</p>
+    <a class="price-btn" href="https://wa.me/919779300886">Contact Me</a>
   </div>
 
 </div>
 </section>
 
-<!-- WHY CHOOSE US -->
-<section id="why">
-<h2 class="title">Why Choose Us</h2>
-<p class="subtitle">We focus on quality, speed & results</p>
+<!-- PROFILE SECTION (NO PHOTO) -->
+<section id="profile" class="profile">
+<h2 class="title">Developer Profile</h2>
+<p class="subtitle">About the creator of SandhuWeb</p>
 
-<div class="grid">
-
-  <div class="card">
-    ⚡ Fast Delivery<br><br>
-    High-quality websites delivered quickly.
-  </div>
-
-  <div class="card">
-    💎 Premium Design<br><br>
-    Modern UI/UX that increases conversions.
-  </div>
-
-  <div class="card">
-    🚀 SEO Optimized<br><br>
-    Google-ready structure for ranking.
-  </div>
-
-  <div class="card">
-    🤝 Support<br><br>
-    We help even after project delivery.
-  </div>
-
+<div class="profile-box">
+  <h3>Khushwinder Singh</h3>
+  <p>
+    Full Stack Web Developer specializing in modern UI/UX, 
+    responsive design, SEO optimization, and high-converting business websites.  
+    Passionate about building fast, clean, and scalable web solutions.
+  </p>
 </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
 <h2 class="title">Skills</h2>
-<p class="subtitle">Technologies we use</p>
+<p class="subtitle">Technologies I work with</p>
 
 <div class="grid">
-
   <div class="card">HTML / CSS / JS</div>
   <div class="card">React / Next.js</div>
   <div class="card">UI/UX Design</div>
   <div class="card">SEO Optimization</div>
   <div class="card">WordPress</div>
   <div class="card">Performance Optimization</div>
-
 </div>
 </section>
 
-<!-- OWNER -->
-<section id="owner">
-<h2 class="title">About Owner</h2>
-<p class="subtitle">Meet the developer behind SandhuWeb</p>
+<footer>© 2026 SandhuWeb</footer>
 
-<div class="grid">
+<!-- MATRIX CODE ANIMATION -->
+<script>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
 
-  <div class="card" style="text-align:center">
-    <div class="owner-img"></div>
-    <h3>Khushwinder Singh</h3>
-    <p style="color:#9ca3af;margin-top:10px">
-      Full Stack Web Developer<br>
-      Passionate about building modern websites that convert visitors into customers.
-    </p>
-  </div>
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
 
-</div>
-</section>
+let letters = "01HTMLCSSJAVASCRIPTWEBDEVUIUXSEO<>/{}[]";
+letters = letters.split("");
 
-<footer>© 2026 SandhuWeb | All Rights Reserved</footer>
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+
+const drops = [];
+for(let x=0;x<columns;x++) drops[x]=1;
+
+function draw(){
+  ctx.fillStyle="rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle="#22d3ee";
+  ctx.font=fontSize+"px monospace";
+
+  for(let i=0;i<drops.length;i++){
+    const text=letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+    if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+      drops[i]=0;
+    }
+    drops[i]++;
+  }
+}
+
+setInterval(draw,35);
+</script>
 
 </body>
 </html>
