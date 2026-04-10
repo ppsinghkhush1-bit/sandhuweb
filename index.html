@@ -133,6 +133,125 @@ text-align:center;
 padding:30px;
 color:#6b7280;
 }
+
+/* ========================= */
+/* 🔥 HIGH-END PRICING STYLE */
+/* ========================= */
+
+.pricing{
+text-align:center;
+padding:80px 20px;
+}
+
+.section-title{
+font-size:38px;
+font-weight:700;
+}
+
+.section-subtitle{
+color:#9ca3af;
+margin-top:10px;
+margin-bottom:40px;
+}
+
+.pricing-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+max-width:1100px;
+margin:auto;
+}
+
+.price-card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:20px;
+padding:30px 25px;
+text-align:left;
+transition:0.4s ease;
+position:relative;
+backdrop-filter: blur(10px);
+}
+
+.price-card:hover{
+transform:translateY(-10px);
+border-color:rgba(34,211,238,0.4);
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+.price-card h3{
+font-size:20px;
+margin-bottom:10px;
+}
+
+.price{
+font-size:32px;
+font-weight:700;
+background:linear-gradient(90deg,#4f46e5,#22d3ee);
+-webkit-background-clip:text;
+color:transparent;
+margin-bottom:15px;
+}
+
+.price-card ul{
+list-style:none;
+margin:20px 0;
+}
+
+.price-card ul li{
+margin:10px 0;
+color:#cbd5e1;
+font-size:14px;
+position:relative;
+padding-left:18px;
+}
+
+.price-card ul li::before{
+content:"✓";
+position:absolute;
+left:0;
+color:#22d3ee;
+font-weight:bold;
+}
+
+.price-btn{
+display:block;
+text-align:center;
+padding:12px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.1);
+text-decoration:none;
+color:white;
+font-weight:600;
+margin-top:10px;
+transition:0.3s;
+}
+
+.price-btn:hover{
+border-color:#22d3ee;
+}
+
+.price-btn.primary{
+background:linear-gradient(135deg,#4f46e5,#22d3ee);
+border:none;
+}
+
+.featured{
+border:1px solid rgba(34,211,238,0.5);
+transform:scale(1.05);
+}
+
+.badge{
+position:absolute;
+top:15px;
+right:15px;
+background:#22d3ee;
+color:#000;
+font-size:12px;
+padding:5px 10px;
+border-radius:20px;
+font-weight:700;
+}
 </style>
 </head>
 
@@ -157,18 +276,54 @@ color:#6b7280;
 </div>
 </div>
 
-<section id="services">
-<h2>Pricing</h2>
-<div class="grid">
-<div class="card">
-<h3>Standard</h3>
-<p>₹7,000</p>
-</div>
-<div class="card">
-<h3>Premium</h3>
-<p>₹10,000</p>
-</div>
-</div>
+<!-- ================= PRICING (UPDATED ONLY) ================= -->
+<section id="services" class="pricing">
+  <h2 class="section-title">Pricing Plans</h2>
+  <p class="section-subtitle">Choose a plan that fits your business goals</p>
+
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <h3>Starter</h3>
+      <p class="price">₹7,000</p>
+      <ul>
+        <li>1 Page Website</li>
+        <li>Mobile Responsive</li>
+        <li>Basic SEO Setup</li>
+        <li>1 Week Delivery</li>
+      </ul>
+      <a href="tel:+919779300886" class="price-btn">Get Started</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="badge">Most Popular</div>
+      <h3>Premium</h3>
+      <p class="price">₹10,000</p>
+      <ul>
+        <li>5 Pages Website</li>
+        <li>Advanced UI/UX Design</li>
+        <li>SEO Optimization</li>
+        <li>Speed Optimization</li>
+        <li>WhatsApp Integration</li>
+        <li>3–5 Days Delivery</li>
+      </ul>
+      <a href="https://wa.me/919779300886" class="price-btn primary">Choose Premium</a>
+    </div>
+
+    <div class="price-card">
+      <h3>Business Pro</h3>
+      <p class="price">₹15,000</p>
+      <ul>
+        <li>Unlimited Pages</li>
+        <li>Custom UI/UX Design</li>
+        <li>Full SEO Package</li>
+        <li>Admin Panel</li>
+        <li>Priority Support</li>
+      </ul>
+      <a href="https://wa.me/919779300886" class="price-btn">Contact Us</a>
+    </div>
+
+  </div>
 </section>
 
 <section id="why">
