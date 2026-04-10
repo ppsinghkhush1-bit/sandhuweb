@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SandhuWeb | Premium Web Design & Development</title>
+<title>SandhuWeb | App Style Website</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --primary:#4f46e5;
-  --accent:#22d3ee;
-  --bg:#000;
-  --card:rgba(255,255,255,0.05);
+  --bg:#05060a;
+  --card:#0f172a;
   --border:rgba(255,255,255,0.08);
   --text:#e5e7eb;
+  --accent:#22d3ee;
+  --primary:#4f46e5;
 }
 
 *{
@@ -26,33 +26,21 @@
 }
 
 body{
-  background:#000;
+  background:var(--bg);
   color:var(--text);
-  overflow-x:hidden;
+  height:100vh;
+  overflow:hidden; /* ✅ NO SCROLL = ONE PAGE ONLY */
 }
 
-/* ===== MATRIX BACKGROUND (READABLE FIXED) ===== */
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:-1;
-}
-
-/* ===== NAV ===== */
+/* NAV */
 nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:15px 30px;
-  position:sticky;
-  top:0;
+  padding:15px 25px;
   background:rgba(0,0,0,0.6);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--border);
-  z-index:1000;
 }
 
 nav h1{
@@ -63,112 +51,85 @@ nav h1{
 
 nav a{
   margin-left:15px;
-  text-decoration:none;
   color:#9ca3af;
+  text-decoration:none;
   font-size:14px;
-  transition:0.3s;
+  cursor:pointer;
 }
 
-nav a:hover{
-  color:#fff;
+nav a.active{
+  color:white;
 }
 
-/* ===== MULTI PAGE STYLE ===== */
-section{
-  min-height:100vh;
-  padding:80px 20px;
+/* PAGE SYSTEM */
+.page{
   display:none;
-  animation:fade 0.5s ease;
+  height:calc(100vh - 60px);
+  padding:40px;
+  animation:fade 0.4s ease;
 }
 
-section.active{
-  display:block;
+.page.active{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
 @keyframes fade{
-  from{opacity:0;transform:translateY(20px);}
+  from{opacity:0;transform:translateY(15px);}
   to{opacity:1;transform:translateY(0);}
 }
 
-/* ===== HERO ===== */
-.hero{
-  text-align:center;
-  max-width:800px;
-  margin:auto;
-}
-
-.hero h2{
-  font-size:44px;
+/* HERO */
+h2{
+  font-size:42px;
   background:linear-gradient(90deg,#fff,#9ca3af);
   -webkit-background-clip:text;
   color:transparent;
 }
 
-.hero p{
-  margin-top:15px;
+p{
   color:#9ca3af;
+  margin-top:10px;
+  max-width:600px;
 }
 
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);
+  padding:25px;
+  border-radius:16px;
+  width:320px;
+}
+
+/* BUTTON */
 .btn{
-  display:inline-block;
+  margin-top:20px;
   padding:12px 20px;
   border-radius:30px;
   text-decoration:none;
   font-weight:600;
   color:white;
-  border:1px solid var(--border);
-  margin-top:20px;
-}
-
-.btn-primary{
   background:linear-gradient(135deg,#4f46e5,#22d3ee);
-  border:none;
+  display:inline-block;
 }
 
-/* ===== TITLES ===== */
-.title{
-  text-align:center;
-  font-size:32px;
-}
-
-.subtitle{
-  text-align:center;
-  color:#9ca3af;
-  margin-bottom:40px;
-}
-
-/* ===== GRID ===== */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  max-width:1000px;
-  margin:auto;
-}
-
-/* ===== CARDS ===== */
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:25px;
-  border-radius:18px;
-  backdrop-filter:blur(10px);
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-  border-color:var(--accent);
-}
-
-/* ===== PRICING ===== */
+/* PRICE */
 .price{
   color:var(--accent);
   font-size:18px;
   margin:10px 0;
 }
 
-ul{list-style:none}
+/* LIST */
+ul{
+  list-style:none;
+  text-align:left;
+  margin-top:10px;
+}
 
 li{
   padding:6px 0;
@@ -180,15 +141,15 @@ li::before{
   color:var(--accent);
 }
 
-/* ===== LIMITED OFFER BADGE ===== */
-.offer{
+/* LIMITED OFFER */
+.badge{
   background:red;
   color:white;
   font-size:11px;
   padding:5px 10px;
   border-radius:20px;
-  display:inline-block;
   margin-bottom:10px;
+  display:inline-block;
   animation:pulse 1.5s infinite;
 }
 
@@ -196,7 +157,7 @@ li::before{
   50%{transform:scale(1.1);}
 }
 
-/* ===== WHATSAPP BUTTON ===== */
+/* WHATSAPP */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -208,160 +169,102 @@ li::before{
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:999;
   box-shadow:0 10px 20px rgba(0,0,0,0.4);
 }
 
 .whatsapp img{
   width:35px;
 }
-
-/* ===== PROFILE ===== */
-.profile-box{
-  max-width:600px;
-  margin:auto;
-  padding:30px;
-  background:rgba(255,255,255,0.04);
-  border:1px solid var(--border);
-  border-radius:20px;
-  text-align:center;
-}
 </style>
 </head>
 
 <body>
 
-<!-- MATRIX BACKGROUND -->
-<canvas id="matrix"></canvas>
-
 <!-- NAV -->
 <nav>
 <h1>SandhuWeb</h1>
 <div>
-<a href="#" onclick="show('home')">Home</a>
-<a href="#" onclick="show('pricing')">Pricing</a>
-<a href="#" onclick="show('services')">Services</a>
-<a href="#" onclick="show('profile')">Profile</a>
+<a class="active" onclick="show('home')">Home</a>
+<a onclick="show('pricing')">Pricing</a>
+<a onclick="show('services')">Services</a>
+<a onclick="show('profile')">Profile</a>
 </div>
 </nav>
 
 <!-- HOME -->
-<section id="home" class="active">
-<div class="hero">
+<div id="home" class="page active">
 <h2>We Build High Converting Websites</h2>
-<p>Fast, SEO optimized and modern websites for businesses</p>
-<a class="btn btn-primary" href="https://wa.me/919779300886">Get Started</a>
+<p>Fast, modern and SEO optimized websites for businesses that want results.</p>
+<a class="btn" href="https://wa.me/919779300886">Get Started</a>
 </div>
-</section>
 
 <!-- PRICING -->
-<section id="pricing">
-<h2 class="title">Pricing Plans</h2>
-<p class="subtitle">Choose the best plan for your business</p>
+<div id="pricing" class="page">
+<h2>Pricing Plans</h2>
 
-<div class="grid">
-
-  <div class="card">
-    <h3>Starter</h3>
-    <p class="price">₹7,000</p>
-    <ul>
-      <li>1 Page Website</li>
-      <li>Responsive Design</li>
-      <li>Basic SEO</li>
-      <li>1 Week Delivery</li>
-    </ul>
-    <a class="btn btn-primary" href="https://wa.me/919779300886">Contact Me</a>
-  </div>
-
-  <div class="card">
-    <span class="offer">🔥 LIMITED OFFER</span>
-    <h3>Premium</h3>
-    <p class="price">Based on Requirements</p>
-    <ul>
-      <li>Premium UI/UX Design</li>
-      <li>Advanced Animations</li>
-      <li>SEO Optimization</li>
-      <li>Speed Optimization</li>
-      <li>WhatsApp Integration</li>
-      <li>3–5 Days Delivery</li>
-    </ul>
-    <a class="btn btn-primary" href="https://wa.me/919779300886">Contact Me</a>
-  </div>
-
+<div class="card">
+<h3>Starter</h3>
+<p class="price">₹7,000</p>
+<p>1 Page Website + Basic SEO</p>
+<a class="btn" href="https://wa.me/919779300886">Contact Me</a>
 </div>
-</section>
+
+<br>
+
+<div class="card">
+<span class="badge">🔥 LIMITED OFFER</span>
+<h3>Premium</h3>
+<p class="price">Based on Requirements</p>
+<ul>
+<li>Premium UI/UX Design</li>
+<li>Animations</li>
+<li>SEO Optimization</li>
+<li>Speed Optimization</li>
+<li>WhatsApp Integration</li>
+<li>3–5 Days Delivery</li>
+</ul>
+<a class="btn" href="https://wa.me/919779300886">Contact Me</a>
+</div>
+</div>
 
 <!-- SERVICES -->
-<section id="services">
-<h2 class="title">Services</h2>
-<p class="subtitle">What I offer</p>
+<div id="services" class="page">
+<h2>Services</h2>
 
-<div class="grid">
-<div class="card">Website Design</div>
-<div class="card">Web Development</div>
-<div class="card">SEO Optimization</div>
-<div class="card">Landing Pages</div>
+<div class="card">
+<p>Website Design</p>
+<p>Web Development</p>
+<p>SEO Optimization</p>
+<p>Landing Pages</p>
 </div>
-</section>
+</div>
 
 <!-- PROFILE -->
-<section id="profile">
-<h2 class="title">Developer Profile</h2>
+<div id="profile" class="page">
+<h2>Developer Profile</h2>
 
-<div class="profile-box">
+<div class="card">
 <h3>Khushwinder Singh</h3>
-<p>Full Stack Web Developer building modern, fast, SEO optimized websites for businesses.</p>
+<p>Full Stack Developer specializing in modern UI, UX, SEO and high converting websites.</p>
 </div>
-</section>
+</div>
 
-<!-- WHATSAPP FLOAT -->
+<!-- WHATSAPP -->
 <a class="whatsapp" href="https://wa.me/919779300886">
 <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
 
-<!-- MATRIX SCRIPT (READABLE VERSION) -->
-<script>
-const canvas=document.getElementById("matrix");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let letters="01HTMLCSSJAVASCRIPTWEBDEVUIUXSEO<>/{}[]";
-letters=letters.split("");
-
-const fontSize=14;
-const columns=canvas.width/fontSize;
-const drops=[];
-
-for(let i=0;i<columns;i++) drops[i]=1;
-
-function draw(){
-  ctx.fillStyle="rgba(255,255,255,0.04)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  ctx.fillStyle="#0f172a";
-  ctx.font=fontSize+"px monospace";
-
-  for(let i=0;i<drops.length;i++){
-    const text=letters[Math.floor(Math.random()*letters.length)];
-    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-
-    if(drops[i]*fontSize>canvas.height) drops[i]=0;
-    drops[i]++;
-  }
-}
-
-setInterval(draw,35);
-</script>
-
-<!-- PAGE SWITCH -->
+<!-- PAGE SWITCH SCRIPT -->
 <script>
 function show(id){
-  document.querySelectorAll("section").forEach(s=>{
-    s.classList.remove("active");
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active');
   });
-  document.getElementById(id).classList.add("active");
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.classList.remove('active');
+  });
 }
 </script>
 
