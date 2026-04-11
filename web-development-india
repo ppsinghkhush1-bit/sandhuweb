@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Web Development Services in India | Custom Website Development Company</title>
+
+  <meta name="description" content="Professional web development services in India. We build fast, secure, SEO-friendly and scalable websites using modern technologies like React and Node.js.">
+
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://yourdomain.com/web-development-india" />
+</head>
+
+<body>
+
+<header>
+  <h1>Web Development Services in India</h1>
+  <p>
+    High-quality, fast, and scalable web development services for businesses, startups, and entrepreneurs in India.
+  </p>
+</header>
+
+<section>
+  <h2>Professional Web Development Solutions</h2>
+  <p>
+    We provide end-to-end web development services in India using modern technologies like React, Node.js, and modern frontend frameworks.
+    Our goal is to build powerful, secure, and high-performance websites that help businesses grow online.
+  </p>
+
+  <p>
+    Whether you need a business website, e-commerce platform, or custom web application, we deliver scalable solutions designed for performance and user experience.
+  </p>
+</section>
+
+<section>
+  <h2>Our Web Development Services</h2>
+
+  <ul>
+    <li>Custom Website Development</li>
+    <li>Frontend Development (React / HTML / CSS)</li>
+    <li>Backend Development (Node.js / APIs)</li>
+    <li>E-commerce Development</li>
+    <li>Landing Page Development</li>
+    <li>Website Maintenance & Optimization</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Why Choose Our Web Development Services in India?</h2>
+
+  <ul>
+    <li>Clean and Modern Code Architecture</li>
+    <li>High Performance and Fast Loading Websites</li>
+    <li>SEO Friendly Development Structure</li>
+    <li>Mobile Responsive Design</li>
+    <li>Secure Backend Systems</li>
+    <li>Scalable for Future Growth</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Technologies We Use</h2>
+
+  <ul>
+    <li>React.js / Next.js</li>
+    <li>Node.js / Express</li>
+    <li>HTML5 / CSS3 / JavaScript</li>
+    <li>MongoDB / MySQL</li>
+    <li>REST APIs</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Who Can Benefit From Our Services?</h2>
+
+  <p>
+    Our web development services are perfect for startups, small businesses, agencies, freelancers, and companies looking to build a strong online presence in India.
+  </p>
+</section>
+
+<section>
+  <h2>Our Development Process</h2>
+
+  <ol>
+    <li>Requirement Analysis</li>
+    <li>UI/UX Planning</li>
+    <li>Frontend Development</li>
+    <li>Backend Development</li>
+    <li>Testing & Optimization</li>
+    <li>Deployment & Support</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Build Scalable and Future-Ready Websites</h2>
+
+  <p>
+    A good website is not just about design — it is about performance, scalability, and user experience.
+    We build websites that are optimized for speed, SEO, and conversions.
+  </p>
+</section>
+
+<section>
+  <h2>Contact for Web Development in India</h2>
+
+  <p>
+    Looking for a professional web development company in India? Contact us today for a free consultation.
+  </p>
+
+  <a href="https://wa.me/919779300886" style="padding:12px 20px;background:#22d3ee;color:black;text-decoration:none;border-radius:8px;">
+    Chat on WhatsApp
+  </a>
+
+  <br><br>
+
+  <a href="tel:9779300886">
+    Call Now: 9779300886
+  </a>
+</section>
+
+<footer>
+  <p>© 2026 Web Development Services India</p>
+</footer>
+
+</body>
+</html>
