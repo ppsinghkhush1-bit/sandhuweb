@@ -153,20 +153,101 @@ section{padding:90px 5%}
 
 /* PORTFOLIO */
 #portfolio{background:var(--bg)}
-.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.portfolio-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--border);transition:transform .25s,box-shadow .25s}
-.portfolio-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(26,58,138,.12)}
-.portfolio-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
-.portfolio-img.blue{background:linear-gradient(135deg,#0f2260,#2550b8)}
-.portfolio-img.orange{background:linear-gradient(135deg,#d45f00,#ff9a45)}
-.portfolio-img.mixed{background:linear-gradient(135deg,#1a3a8a,#f47920)}
+
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px
+}
+
+.portfolio-card{
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  transition:transform .25s,box-shadow .25s
+}
+
+.portfolio-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 50px rgba(26,58,138,.12)
+}
+
+/* ✅ IMAGE FIX */
+.portfolio-img{
+  height:180px;
+  overflow:hidden;
+  background:#f8f9ff;
+  position:relative;
+}
+
+/* IMAGE STYLE */
+.portfolio-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* change to 'contain' if PNG has logo */
+  transition:0.4s;
+}
+
+/* HOVER ZOOM EFFECT */
+.portfolio-card:hover img{
+  transform:scale(1.1);
+}
+
+/* ❌ REMOVE OLD BACKGROUNDS */
+.portfolio-img.blue,
+.portfolio-img.orange,
+.portfolio-img.mixed{
+  background:none;
+}
+
+/* BODY */
 .portfolio-body{padding:20px}
-.portfolio-body h3{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:6px}
-.portfolio-body p{font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px}
-.portfolio-link{font-size:.82rem;font-weight:600;color:var(--orange);text-decoration:none;display:inline-flex;align-items:center;gap:4px}
-.portfolio-link:hover{color:var(--orange-dark)}
-.portfolio-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-.ptag{padding:2px 8px;background:rgba(26,58,138,.06);border-radius:100px;font-size:.7rem;font-weight:600;color:var(--blue)}
+
+.portfolio-body h3{
+  font-family:var(--font-head);
+  font-size:1rem;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:6px
+}
+
+.portfolio-body p{
+  font-size:.83rem;
+  color:var(--text-muted);
+  line-height:1.6;
+  margin-bottom:12px
+}
+
+.portfolio-link{
+  font-size:.82rem;
+  font-weight:600;
+  color:var(--orange);
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:4px
+}
+
+.portfolio-link:hover{
+  color:var(--orange-dark)
+}
+
+.portfolio-tags{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-bottom:10px
+}
+
+.ptag{
+  padding:2px 8px;
+  background:rgba(26,58,138,.06);
+  border-radius:100px;
+  font-size:.7rem;
+  font-weight:600;
+  color:var(--blue)
+}
 
 /* TESTIMONIALS */
 #testimonials{background:#fff}
@@ -406,39 +487,65 @@ footer a{color:var(--orange-light);text-decoration:none}
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="section-head reveal">
-    <div class="section-tag">Our Work</div>
-    <h2 class="section-title">Recent <span>Projects</span></h2>
-    <p class="section-sub">Real websites we have built for real businesses.</p>
-  </div>
-  <div class="portfolio-grid">
-    <div class="portfolio-card reveal">
-      <div class="portfolio-img blue">🏨</div>
-      <div class="portfolio-body">
-        <div class="portfolio-tags"><span class="ptag">React</span><span class="ptag">Vite</span><span class="ptag">EmailJS</span></div>
-        <h3>ClickInRoom</h3>
-        <p>Full-featured hotel digital marketing website with booking form, gallery, SEO and EmailJS contact integration.</p>
-        <a href="https://www.clickinroom.com" target="_blank" class="portfolio-link">View Live Site →</a>
-      </div>
+  <div class="section-tag">Our Work</div>
+  <h2 class="section-title">Recent <span>Projects</span></h2>
+  <p class="section-sub">Real websites we have built for real businesses.</p>
+</div>
+
+<div class="portfolio-grid">
+
+  <!-- ClickInRoom -->
+  <div class="portfolio-card reveal">
+    <div class="portfolio-img">
+      <img src="clickinrooom.png" alt="ClickInRoom">
     </div>
-    <div class="portfolio-card reveal">
-      <div class="portfolio-img orange">🌐</div>
-      <div class="portfolio-body">
-        <div class="portfolio-tags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">SEO</span></div>
-        <h3>SandhuWeb</h3>
-        <p>Our own professional portfolio website showcasing services, pricing and client work with advanced UI/UX design.</p>
-        <a href="https://sandhuweb.com" target="_blank" class="portfolio-link">View Live Site →</a>
+    <div class="portfolio-body">
+      <div class="portfolio-tags">
+        <span class="ptag">React</span>
+        <span class="ptag">Vite</span>
+        <span class="ptag">EmailJS</span>
       </div>
-    </div>
-    <div class="portfolio-card reveal">
-      <div class="portfolio-img mixed">📦</div>
-      <div class="portfolio-body">
-        <div class="portfolio-tags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">SEO</span></div>
-        <h3>Hotel Green Garden</h3>
-        <p>We are ready to build your business website, hotel site or landing page. Contact us today for a free quote.</p>
-        <a href="https://hotelgreengarden.in/" target="_blank" class="portfolio-link">Get Started →</a>
-      </div>
+      <h3>ClickInRoom</h3>
+      <p>Full-featured hotel digital marketing website with booking form, gallery, SEO and EmailJS contact integration.</p>
+      <a href="https://www.clickinroom.com" target="_blank" class="portfolio-link">View Live Site →</a>
     </div>
   </div>
+
+  <!-- SandhuWeb -->
+  <div class="portfolio-card reveal">
+    <div class="portfolio-img">
+      <img src="sandhuweb.png" alt="SandhuWeb">
+    </div>
+    <div class="portfolio-body">
+      <div class="portfolio-tags">
+        <span class="ptag">HTML</span>
+        <span class="ptag">CSS</span>
+        <span class="ptag">SEO</span>
+      </div>
+      <h3>SandhuWeb</h3>
+      <p>Our own professional portfolio website showcasing services, pricing and client work with advanced UI/UX design.</p>
+      <a href="https://sandhuweb.com" target="_blank" class="portfolio-link">View Live Site →</a>
+    </div>
+  </div>
+
+  <!-- Hotel Green Garden -->
+  <div class="portfolio-card reveal">
+    <div class="portfolio-img">
+      <img src="hotelgreengarden.png" alt="Hotel Green Garden">
+    </div>
+    <div class="portfolio-body">
+      <div class="portfolio-tags">
+        <span class="ptag">HTML</span>
+        <span class="ptag">CSS</span>
+        <span class="ptag">SEO</span>
+      </div>
+      <h3>Hotel Green Garden</h3>
+      <p>We are ready to build your business website, hotel site or landing page. Contact us today for a free quote.</p>
+      <a href="https://hotelgreengarden.in/" target="_blank" class="portfolio-link">Get Started →</a>
+    </div>
+  </div>
+
+</div>
 </section>
 
 <!-- PRICING -->
