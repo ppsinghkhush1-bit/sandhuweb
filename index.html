@@ -1,341 +1,594 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Website Design & Web Development Services India | SandhuWeb</title>
-
-<meta name="description" content="Professional website design and web development services in India. SEO optimized, fast loading, high converting business websites and landing pages.">
-<meta name="keywords" content="website design, web development, SEO website India, freelance web developer Punjab, landing page design, business website India, UI UX design, website development services">
-
-<meta name="robots" content="index, follow">
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SandhuWeb – Websites & Digital Solutions</title>
+<meta name="description" content="Professional website design, web development and SEO services in Punjab, India. Modern, fast and high-converting websites for businesses and startups."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#05060a;
-  --card:rgba(255,255,255,0.05);
-  --border:rgba(255,255,255,0.08);
-  --text:#e5e7eb;
-  --accent:#22d3ee;
-  --primary:#4f46e5;
+  --blue:#1a3a8a;
+  --blue-light:#2550b8;
+  --blue-dark:#0f2260;
+  --orange:#f47920;
+  --orange-light:#ff9a45;
+  --orange-dark:#d45f00;
+  --white:#ffffff;
+  --bg:#f8f9ff;
+  --text:#0f1b3d;
+  --text-muted:#5a6a8a;
+  --card:#ffffff;
+  --border:#e2e8f8;
+  --font-head:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
 }
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflow-x:hidden}
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Inter, Arial, sans-serif;
-}
-
-body{
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-  scroll-behavior:smooth;
-}
-
-/* ================= ANIMATED BACKGROUND ================= */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(34,211,238,0.18), transparent 35%),
-    radial-gradient(circle at 80% 30%, rgba(79,70,229,0.18), transparent 35%),
-    radial-gradient(circle at 50% 80%, rgba(34,211,238,0.12), transparent 40%);
-  animation:moveBG 12s infinite alternate;
-  z-index:-1;
-}
-
-@keyframes moveBG{
-  0%{transform:scale(1);}
-  100%{transform:scale(1.2) translateY(15px);}
-}
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#eef0f8}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:3px}
 
 /* NAV */
-nav{
-  position:sticky;
-  top:0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 25px;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-  z-index:1000;
-}
-
-nav h1{
-  font-size:20px;
-  background:linear-gradient(90deg,#4f46e5,#22d3ee);
-  -webkit-background-clip:text;
-  color:transparent;
-}
-
-nav a{
-  margin-left:15px;
-  text-decoration:none;
-  color:#9ca3af;
-  font-size:14px;
-}
-
-nav a:hover{color:white}
-
-/* SECTIONS */
-section{
-  padding:90px 20px;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 30px rgba(26,58,138,.1)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{width:44px;height:44px;object-fit:contain}
+.nav-logo-text{font-family:var(--font-head);font-size:1.25rem;font-weight:800;color:var(--blue)}
+.nav-logo-text span{color:var(--orange)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transition:transform .25s}
+.nav-links a:hover{color:var(--blue)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{padding:10px 22px;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(244,121,32,.35)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--blue);border-radius:2px;transition:.3s}
 
 /* HERO */
-.hero{
-  text-align:center;
-  padding:120px 20px 80px;
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden;background:linear-gradient(160deg,#f0f4ff 0%,#fff8f2 100%)}
+.hero-bg-circle{position:absolute;border-radius:50%;opacity:.07;pointer-events:none}
+.hero-bg-circle.c1{width:600px;height:600px;background:var(--blue);top:-200px;right:-100px}
+.hero-bg-circle.c2{width:400px;height:400px;background:var(--orange);bottom:-150px;left:-100px}
+.hero-grid-dots{position:absolute;inset:0;background-image:radial-gradient(circle,#1a3a8a22 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero-content{max-width:620px;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(26,58,138,.08);border:1px solid rgba(26,58,138,.15);border-radius:100px;font-size:.8rem;font-weight:600;color:var(--blue);margin-bottom:24px;animation:fadeUp .6s ease both}
+.hero-badge-dot{width:8px;height:8px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;line-height:1.1;margin-bottom:20px;animation:fadeUp .6s .1s ease both}
+.hero h1 .highlight{color:var(--orange);position:relative;display:inline-block}
+.hero h1 .highlight::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--orange),var(--orange-light));border-radius:2px;opacity:.4}
+.hero-sub{font-size:1.05rem;color:var(--text-muted);line-height:1.7;margin-bottom:32px;max-width:500px;animation:fadeUp .6s .2s ease both}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .6s .3s ease both}
+.btn-primary{padding:14px 28px;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(26,58,138,.3)}
+.btn-secondary{padding:14px 28px;background:transparent;color:var(--blue);border:2px solid var(--blue);border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{background:var(--blue);color:#fff;transform:translateY(-3px)}
+.hero-stats{display:flex;gap:36px;margin-top:48px;animation:fadeUp .6s .4s ease both}
+.stat-item{}
+.stat-num{font-family:var(--font-head);font-size:1.8rem;font-weight:800;color:var(--blue)}
+.stat-num span{color:var(--orange)}
+.stat-label{font-size:.8rem;color:var(--text-muted);font-weight:500}
+.hero-visual{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:42%;max-width:480px;animation:floatIn .8s .2s ease both;pointer-events:none}
+.hero-card-stack{position:relative;height:380px}
+.hero-card{position:absolute;background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(26,58,138,.12);padding:20px 24px;animation:float 6s ease-in-out infinite}
+.hero-card.c1{width:260px;top:0;right:40px;animation-delay:0s}
+.hero-card.c2{width:220px;bottom:30px;right:0;animation-delay:1.5s}
+.hero-card.c3{width:200px;top:100px;right:240px;animation-delay:3s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:10px}
+.card-icon.blue{background:rgba(26,58,138,.1)}
+.card-icon.orange{background:rgba(244,121,32,.1)}
+.card-title{font-family:var(--font-head);font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.card-sub{font-size:.75rem;color:var(--text-muted)}
+.card-bar{height:6px;background:#f0f4ff;border-radius:3px;margin-top:12px;overflow:hidden}
+.card-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--orange))}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floatIn{from{opacity:0;transform:translateY(-20px) translateX(20px)}to{opacity:1;transform:translateY(-50%) translateX(0)}}
+
+/* MARQUEE */
+.marquee-section{padding:20px 0;background:var(--blue);overflow:hidden;position:relative}
+.marquee-track{display:flex;gap:48px;white-space:nowrap;animation:marquee 18s linear infinite}
+.marquee-item{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.05em}
+.marquee-dot{width:6px;height:6px;background:var(--orange);border-radius:50%;flex-shrink:0}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:90px 5%}
+.section-tag{display:inline-block;padding:5px 14px;background:rgba(244,121,32,.1);border:1px solid rgba(244,121,32,.25);border-radius:100px;font-size:.78rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.section-title{font-family:var(--font-head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;color:var(--text);line-height:1.15;margin-bottom:14px}
+.section-title span{color:var(--orange)}
+.section-sub{font-size:1rem;color:var(--text-muted);max-width:500px;line-height:1.7}
+.section-head{margin-bottom:56px}
+
+/* SERVICES */
+#services{background:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.service-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;transition:transform .25s,box-shadow .25s,border-color .25s;cursor:default;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--blue),var(--blue-light));opacity:0;transition:opacity .3s;border-radius:16px}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(26,58,138,.12);border-color:var(--blue-light)}
+.service-card:hover::before{opacity:.04}
+.service-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px;position:relative;z-index:1}
+.service-card h3{font-family:var(--font-head);font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:8px;position:relative;z-index:1}
+.service-card p{font-size:.88rem;color:var(--text-muted);line-height:1.65;position:relative;z-index:1}
+.service-tag{display:inline-block;margin-top:14px;padding:3px 10px;background:rgba(244,121,32,.1);border-radius:100px;font-size:.72rem;font-weight:600;color:var(--orange);position:relative;z-index:1}
+
+/* PRICING */
+#pricing{background:linear-gradient(160deg,#f0f4ff,#fff8f2)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:900px}
+.price-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:36px;position:relative;transition:transform .25s,box-shadow .25s}
+.price-card.featured{border-color:var(--orange);box-shadow:0 20px 60px rgba(244,121,32,.15)}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(26,58,138,.12)}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:5px 18px;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;border-radius:100px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.price-name{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.price-amount{font-family:var(--font-head);font-size:2.6rem;font-weight:800;color:var(--blue);line-height:1;margin-bottom:6px}
+.price-amount sup{font-size:1.2rem;vertical-align:top;margin-top:6px}
+.price-amount.custom{font-size:1.6rem}
+.price-period{font-size:.82rem;color:var(--text-muted);margin-bottom:24px}
+.price-features{list-style:none;margin-bottom:28px}
+.price-features li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text-muted);padding:7px 0;border-bottom:1px solid var(--border)}
+.price-features li:last-child{border:none}
+.price-features li::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0;margin-top:1px}
+.btn-price{display:block;text-align:center;padding:13px;border-radius:10px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s}
+.btn-price.outline{border:2px solid var(--blue);color:var(--blue)}
+.btn-price.outline:hover{background:var(--blue);color:#fff}
+.btn-price.solid{background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff}
+.btn-price.solid:hover{box-shadow:0 8px 24px rgba(244,121,32,.4);transform:translateY(-2px)}
+
+/* PROCESS */
+#process{background:#fff}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;position:relative}
+.process-steps::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--blue),var(--orange));opacity:.2;pointer-events:none}
+.process-step{text-align:center;padding:0 20px;position:relative}
+.step-num{width:72px;height:72px;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:var(--font-head);font-size:1.4rem;font-weight:800;color:#fff;position:relative;z-index:1;transition:transform .25s,box-shadow .25s}
+.process-step:hover .step-num{transform:scale(1.1);box-shadow:0 12px 32px rgba(26,58,138,.25)}
+.step-title{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.step-desc{font-size:.83rem;color:var(--text-muted);line-height:1.6}
+
+/* PORTFOLIO */
+#portfolio{background:var(--bg)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.portfolio-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--border);transition:transform .25s,box-shadow .25s}
+.portfolio-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(26,58,138,.12)}
+.portfolio-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.portfolio-img.blue{background:linear-gradient(135deg,#0f2260,#2550b8)}
+.portfolio-img.orange{background:linear-gradient(135deg,#d45f00,#ff9a45)}
+.portfolio-img.mixed{background:linear-gradient(135deg,#1a3a8a,#f47920)}
+.portfolio-body{padding:20px}
+.portfolio-body h3{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.portfolio-body p{font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px}
+.portfolio-link{font-size:.82rem;font-weight:600;color:var(--orange);text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.portfolio-link:hover{color:var(--orange-dark)}
+.portfolio-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.ptag{padding:2px 8px;background:rgba(26,58,138,.06);border-radius:100px;font-size:.7rem;font-weight:600;color:var(--blue)}
+
+/* TESTIMONIALS */
+#testimonials{background:#fff}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.testi-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative}
+.testi-card::before{content:'\201C';position:absolute;top:16px;right:20px;font-size:4rem;color:var(--orange);opacity:.15;font-family:Georgia,serif;line-height:1}
+.testi-stars{display:flex;gap:3px;margin-bottom:14px}
+.star{color:var(--orange);font-size:.9rem}
+.testi-text{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:18px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--orange));display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:700;color:#fff;font-size:.95rem;flex-shrink:0}
+.testi-name{font-weight:700;font-size:.88rem;color:var(--text)}
+.testi-role{font-size:.75rem;color:var(--text-muted)}
+
+/* PROFILE */
+#profile{background:linear-gradient(160deg,#0f2260,#1a3a8a);color:#fff}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.profile-left{}
+.profile-left .section-tag{background:rgba(244,121,32,.2);border-color:rgba(244,121,32,.4);color:var(--orange-light)}
+.profile-left .section-title{color:#fff}
+.profile-left .section-title span{color:var(--orange-light)}
+.profile-bio{font-size:.95rem;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:28px}
+.skills-list{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.skill-pill{padding:6px 14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:100px;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.85)}
+.profile-contact{display:flex;flex-direction:column;gap:14px}
+.contact-item{display:flex;align-items:center;gap:14px;text-decoration:none;color:rgba(255,255,255,.8);font-size:.9rem;transition:color .2s}
+.contact-item:hover{color:#fff}
+.contact-icon{width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.profile-right{display:flex;flex-direction:column;gap:16px}
+.stat-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;transition:transform .2s,background .2s}
+.stat-box:hover{transform:translateX(6px);background:rgba(255,255,255,.1)}
+.stat-box-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--orange),var(--orange-light));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.stat-box-num{font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:#fff}
+.stat-box-label{font-size:.8rem;color:rgba(255,255,255,.6)}
+
+/* CONTACT CTA */
+#contact{background:var(--bg);text-align:center}
+.contact-cta-box{background:#fff;border:1px solid var(--border);border-radius:24px;padding:60px 40px;max-width:680px;margin:0 auto;box-shadow:0 20px 60px rgba(26,58,138,.08)}
+.contact-cta-box .section-title{margin-bottom:12px}
+.contact-cta-box p{color:var(--text-muted);margin-bottom:32px;font-size:.95rem;line-height:1.7}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.whatsapp-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:#25D366;color:#fff;border-radius:10px;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .2s}
+.whatsapp-btn:hover{background:#1ebe5a;transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,211,102,.3)}
+.call-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:transparent;color:var(--blue);border:2px solid var(--blue);border-radius:10px;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .2s}
+.call-btn:hover{background:var(--blue);color:#fff;transform:translateY(-3px)}
+
+/* FOOTER */
+footer{background:#0a1540;color:rgba(255,255,255,.6);padding:36px 5%;text-align:center}
+.footer-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;text-decoration:none}
+.footer-logo img{width:36px;height:36px;object-fit:contain}
+.footer-logo-text{font-family:var(--font-head);font-size:1.1rem;font-weight:800;color:#fff}
+.footer-logo-text span{color:var(--orange)}
+footer p{font-size:.82rem;margin-bottom:8px}
+footer a{color:var(--orange-light);text-decoration:none}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero-visual{display:none}
+  .hero-content{max-width:100%}
+  .profile-grid{grid-template-columns:1fr}
+  .process-steps::before{display:none}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{padding:90px 5% 50px}
+  .hero h1{font-size:2.2rem}
+  .hero-stats{gap:24px}
+  .stat-num{font-size:1.4rem}
+  section{padding:60px 5%}
+  .contact-cta-box{padding:36px 20px}
 }
 
-.hero h1{
-  font-size:48px;
-  font-weight:800;
-  color:white;
-}
-
-.hero h2{
-  font-size:20px;
-  color:var(--accent);
-  margin-top:10px;
-}
-
-.hero p{
-  margin-top:15px;
-  color:#9ca3af;
-  max-width:750px;
-  margin:auto;
-  line-height:1.6;
-}
-
-/* BUTTON */
-.btn{
-  display:inline-block;
-  margin-top:25px;
-  padding:13px 24px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:600;
-  color:white;
-  background:linear-gradient(135deg,#4f46e5,#22d3ee);
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
-  margin-top:40px;
-}
-
-/* CARD */
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:25px;
-  border-radius:18px;
-  transition:0.3s;
-  backdrop-filter:blur(10px);
-}
-
-.card:hover{
-  transform:translateY(-8px);
-  border-color:var(--accent);
-}
-
-/* PRICE */
-.price{
-  color:var(--accent);
-  font-size:18px;
-  margin:10px 0;
-}
-
-/* LIST */
-ul{list-style:none;}
-li{
-  padding:6px 0;
-  color:#cbd5e1;
-}
-li::before{
-  content:"✓ ";
-  color:var(--accent);
-}
-
-/* BADGE */
-.badge{
-  background:red;
-  color:white;
-  font-size:11px;
-  padding:5px 10px;
-  border-radius:20px;
-  display:inline-block;
-  margin-bottom:10px;
-  animation:pulse 1.5s infinite;
-}
-@keyframes pulse{
-  50%{transform:scale(1.1);}
-}
-
-/* PROFILE CONTACT BOX */
-.contact-box{
-  margin-top:15px;
-  padding:15px;
-  border-radius:12px;
-  border:1px solid var(--border);
-}
-
-/* WHATSAPP FLOAT */
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:60px;
-  height:60px;
-  background:#25D366;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:999;
-}
-.whatsapp img{width:35px;}
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
-
 <body>
 
 <!-- NAV -->
-<nav>
-<h1>SandhuWeb</h1>
-<div>
-<a href="#home">Home</a>
-<a href="#services">Services</a>
-<a href="#pricing">Pricing</a>
-<a href="#profile">Profile</a>
-</div>
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <img src="ChatGPT_Image_Apr_11__2026__06_22_12_PM.png" alt="SandhuWeb Logo"/>
+    <span class="nav-logo-text">Sandhu<span>Web</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#profile">About</a></li>
+    <li><a href="#contact" class="nav-cta">Get Quote</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section id="home">
-<div class="hero">
-<h1>Website Design & Web Development Services</h1>
-<h2>India • Punjab • Freelance Developer</h2>
-
-<p>
-We build SEO optimized, high converting, modern websites for businesses, startups and personal brands.
-Our focus is performance, UI/UX design and real business growth.
-</p>
-
-<a class="btn" href="https://wa.me/919779300886">Get Free Consultation</a>
-</div>
+<section id="home" class="hero">
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+  <div class="hero-grid-dots"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="hero-badge-dot"></span> Punjab's #1 Web Developer</div>
+    <h1>We Build Websites That <span class="highlight">Grow</span> Your Business</h1>
+    <p class="hero-sub">Modern, fast and SEO-optimized websites for businesses, hotels and startups across India. From design to delivery — we handle everything.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/919779300886" class="btn-primary">💬 WhatsApp Us</a>
+      <a href="#services" class="btn-secondary">View Services →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">15<span>+</span></div><div class="stat-label">Projects Delivered</div></div>
+      <div class="stat-item"><div class="stat-num">5<span>★</span></div><div class="stat-label">Client Rating</div></div>
+      <div class="stat-item"><div class="stat-num">3<span>days</span></div><div class="stat-label">Avg. Delivery</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="hero-card c1">
+        <div class="card-icon blue">🌐</div>
+        <div class="card-title">Website Design</div>
+        <div class="card-sub">Modern UI/UX for your brand</div>
+        <div class="card-bar"><div class="card-bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="hero-card c2">
+        <div class="card-icon orange">📈</div>
+        <div class="card-title">SEO Ranking</div>
+        <div class="card-sub">Page 1 on Google</div>
+        <div class="card-bar"><div class="card-bar-fill" style="width:70%"></div></div>
+      </div>
+      <div class="hero-card c3">
+        <div class="card-icon blue">⚡</div>
+        <div class="card-title">Fast Delivery</div>
+        <div class="card-sub">3–5 days turnaround</div>
+        <div class="card-bar"><div class="card-bar-fill" style="width:92%"></div></div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Website Design</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Web Development</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>SEO Optimization</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Landing Pages</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Business Websites</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Hotel Websites</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>E-commerce</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>WhatsApp Integration</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Website Design</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Web Development</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>SEO Optimization</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Landing Pages</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Business Websites</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Hotel Websites</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>E-commerce</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>WhatsApp Integration</span>
+  </div>
+</div>
 
 <!-- SERVICES -->
 <section id="services">
-<div class="container">
-<h2>Services</h2>
+  <div class="section-head reveal">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Services That <span>Drive Results</span></h2>
+    <p class="section-sub">Everything your business needs to establish a powerful online presence.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🎨</div>
+      <h3>Website Design</h3>
+      <p>Modern, conversion-focused UI/UX designs that reflect your brand identity and impress visitors from the first second.</p>
+      <span class="service-tag">UI/UX</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">⚙️</div>
+      <h3>Web Development</h3>
+      <p>Fast, secure and fully responsive websites built with modern technologies. Optimized for performance and speed.</p>
+      <span class="service-tag">React • Vite • HTML</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🔍</div>
+      <h3>SEO Optimization</h3>
+      <p>Rank your business on Google page 1. Technical SEO, keyword targeting, meta optimization and Google Business setup.</p>
+      <span class="service-tag">Google Ranking</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🚀</div>
+      <h3>Landing Pages</h3>
+      <p>High-converting landing pages for ads and marketing campaigns. Designed to turn visitors into customers.</p>
+      <span class="service-tag">Ads • Marketing</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🏨</div>
+      <h3>Hotel Websites</h3>
+      <p>Specialized websites for hotels with booking forms, gallery, SEO and WhatsApp integration. Built for direct bookings.</p>
+      <span class="service-tag">Hospitality</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📱</div>
+      <h3>WhatsApp Integration</h3>
+      <p>Connect your website directly to WhatsApp for instant lead capture. Never miss an inquiry from your website again.</p>
+      <span class="service-tag">Lead Generation</span>
+    </div>
+  </div>
+</section>
 
-<div class="grid">
+<!-- PROCESS -->
+<section id="process" style="background:linear-gradient(160deg,#f0f4ff,#fff8f2)">
+  <div class="section-head reveal" style="text-align:center">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">Simple <span>3-Step</span> Process</h2>
+    <p class="section-sub" style="margin:0 auto">From first call to live website — fast and hassle-free.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-num">1</div>
+      <div class="step-title">Free Consultation</div>
+      <p class="step-desc">WhatsApp or call us. We understand your business, goals and requirements in a quick 15-minute call.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">2</div>
+      <div class="step-title">Design & Build</div>
+      <p class="step-desc">We design and develop your website with your feedback at every stage. Delivered in 3–5 working days.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">3</div>
+      <div class="step-title">Launch & Grow</div>
+      <p class="step-desc">We go live and set up SEO, analytics and WhatsApp so you start getting leads from day one.</p>
+    </div>
+  </div>
+</section>
 
-<div class="card">
-<h3>Website Design</h3>
-<p>Modern UI/UX designs for business branding.</p>
-</div>
-
-<div class="card">
-<h3>Web Development</h3>
-<p>Fast, secure and responsive websites.</p>
-</div>
-
-<div class="card">
-<h3>SEO Optimization</h3>
-<p>Rank your website on Google search results.</p>
-</div>
-
-<div class="card">
-<h3>Landing Pages</h3>
-<p>High converting pages for ads and marketing.</p>
-</div>
-
-</div>
-</div>
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-head reveal">
+    <div class="section-tag">Our Work</div>
+    <h2 class="section-title">Recent <span>Projects</span></h2>
+    <p class="section-sub">Real websites we have built for real businesses.</p>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-card reveal">
+      <div class="portfolio-img blue">🏨</div>
+      <div class="portfolio-body">
+        <div class="portfolio-tags"><span class="ptag">React</span><span class="ptag">Vite</span><span class="ptag">EmailJS</span></div>
+        <h3>ClickInRoom</h3>
+        <p>Full-featured hotel digital marketing website with booking form, gallery, SEO and EmailJS contact integration.</p>
+        <a href="https://www.clickinroom.com" target="_blank" class="portfolio-link">View Live Site →</a>
+      </div>
+    </div>
+    <div class="portfolio-card reveal">
+      <div class="portfolio-img orange">🌐</div>
+      <div class="portfolio-body">
+        <div class="portfolio-tags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">SEO</span></div>
+        <h3>SandhuWeb</h3>
+        <p>Our own professional portfolio website showcasing services, pricing and client work with advanced UI/UX design.</p>
+        <a href="https://sandhuweb.com" target="_blank" class="portfolio-link">View Live Site →</a>
+      </div>
+    </div>
+    <div class="portfolio-card reveal">
+      <div class="portfolio-img mixed">📦</div>
+      <div class="portfolio-body">
+        <div class="portfolio-tags"><span class="ptag">Landing Page</span><span class="ptag">WhatsApp</span></div>
+        <h3>Your Project Next?</h3>
+        <p>We are ready to build your business website, hotel site or landing page. Contact us today for a free quote.</p>
+        <a href="https://wa.me/919779300886" target="_blank" class="portfolio-link">Get Started →</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- PRICING -->
 <section id="pricing">
-<div class="container">
-<h2>Pricing Plans</h2>
+  <div class="section-head reveal">
+    <div class="section-tag">Pricing</div>
+    <h2 class="section-title">Transparent <span>Pricing</span></h2>
+    <p class="section-sub">No hidden charges. Pay once, own forever.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="price-name">Starter</div>
+      <div class="price-amount"><sup>₹</sup>7,000</div>
+      <div class="price-period">One-time payment</div>
+      <ul class="price-features">
+        <li>1 Page Website</li>
+        <li>Responsive Design</li>
+        <li>Basic SEO Setup</li>
+        <li>WhatsApp Button</li>
+        <li>Contact Form</li>
+        <li>1 Week Delivery</li>
+      </ul>
+      <a href="https://wa.me/919779300886" class="btn-price outline">Get Started</a>
+    </div>
+    <div class="price-card featured reveal">
+      <div class="price-badge">🔥 Most Popular</div>
+      <div class="price-name">Premium</div>
+      <div class="price-amount custom">Custom Quote</div>
+      <div class="price-period">Based on your requirements</div>
+      <ul class="price-features">
+        <li>Multi-page Website</li>
+        <li>Premium UI/UX Design</li>
+        <li>Advanced Animations</li>
+        <li>Full SEO Optimization</li>
+        <li>Speed Optimization</li>
+        <li>WhatsApp + Email Forms</li>
+        <li>Google Analytics Setup</li>
+        <li>3–5 Days Delivery</li>
+      </ul>
+      <a href="https://wa.me/919779300886" class="btn-price solid">Get Free Quote</a>
+    </div>
+  </div>
+</section>
 
-<div class="grid">
-
-<div class="card">
-<h3>Starter</h3>
-<p class="price">₹7,000</p>
-<ul>
-<li>1 Page Website</li>
-<li>Responsive Design</li>
-<li>Basic SEO</li>
-<li>1 Week Delivery</li>
-</ul>
-<a class="btn" href="https://wa.me/919779300886">Contact Me</a>
-</div>
-
-<div class="card">
-<span class="badge">🔥 LIMITED OFFER</span>
-<h3>Premium</h3>
-<p class="price">Based on Requirements</p>
-<ul>
-<li>Premium UI/UX Design</li>
-<li>Advanced Animations</li>
-<li>SEO Optimization</li>
-<li>Speed Optimization</li>
-<li>WhatsApp Integration</li>
-<li>3–5 Days Delivery</li>
-</ul>
-<a class="btn" href="https://wa.me/919779300886">Contact Me</a>
-</div>
-
-</div>
-</div>
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:#fff">
+  <div class="section-head reveal" style="text-align:center">
+    <div class="section-tag">Reviews</div>
+    <h2 class="section-title">What Clients <span>Say</span></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="testi-text">"Delivered our hotel website in just 4 days. The design is beautiful and we started getting bookings through the website within the first week!"</p>
+      <div class="testi-author"><div class="testi-avatar">RS</div><div><div class="testi-name">Rajveer Singh</div><div class="testi-role">Hotel Owner, Ludhiana</div></div></div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="testi-text">"Very professional work. The SEO helped us rank on Google within 2 weeks. Highly recommend SandhuWeb for any business needing a website."</p>
+      <div class="testi-author"><div class="testi-avatar">AK</div><div><div class="testi-name">Amit Kumar</div><div class="testi-role">Business Owner, Punjab</div></div></div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="testi-text">"Best investment for my business. The landing page they built for my ads doubled my lead conversion. Fast, responsive and very easy to work with."</p>
+      <div class="testi-author"><div class="testi-avatar">PS</div><div><div class="testi-name">Parminder Sharma</div><div class="testi-role">Startup Founder, Chandigarh</div></div></div>
+    </div>
+  </div>
 </section>
 
 <!-- PROFILE -->
 <section id="profile">
-<div class="container">
-
-<h2>Developer Profile</h2>
-
-<div class="card">
-<p>
-I am a freelance web developer from Punjab, India specializing in website design,
-web development, SEO optimization and high converting business websites.
-</p>
-
-<div class="contact-box">
-📞 <b>9779300886</b><br>
-<a href="tel:9779300886" class="btn">Call Now</a>
-<a href="https://wa.me/919779300886" class="btn">WhatsApp</a>
-</div>
-
-</div>
-</div>
+  <div class="profile-grid">
+    <div class="profile-left reveal">
+      <div class="section-tag">About Me</div>
+      <h2 class="section-title">Freelance Developer<br/><span>from Punjab, India</span></h2>
+      <p class="profile-bio">I am a passionate freelance web developer specializing in modern website design, web development and SEO. I have helped 15+ businesses across Punjab and India establish a strong online presence that actually generates leads and revenue.<br/><br/>Every project I take on gets my full attention — from pixel-perfect design to clean, fast code and proper SEO setup.</p>
+      <div class="skills-list">
+        <span class="skill-pill">React</span>
+        <span class="skill-pill">Vite</span>
+        <span class="skill-pill">TypeScript</span>
+        <span class="skill-pill">Tailwind CSS</span>
+        <span class="skill-pill">HTML/CSS</span>
+        <span class="skill-pill">SEO</span>
+        <span class="skill-pill">Node.js</span>
+        <span class="skill-pill">Figma</span>
+      </div>
+      <div class="profile-contact">
+        <a href="tel:9779300886" class="contact-item"><div class="contact-icon">📞</div>+91 97793 00886</a>
+        <a href="https://wa.me/919779300886" class="contact-item"><div class="contact-icon">💬</div>Chat on WhatsApp</a>
+      </div>
+    </div>
+    <div class="profile-right reveal">
+      <div class="stat-box"><div class="stat-box-icon">🚀</div><div><div class="stat-box-num">15+</div><div class="stat-box-label">Websites Delivered</div></div></div>
+      <div class="stat-box"><div class="stat-box-icon">⭐</div><div><div class="stat-box-num">5.0</div><div class="stat-box-label">Average Client Rating</div></div></div>
+      <div class="stat-box"><div class="stat-box-icon">⚡</div><div><div class="stat-box-num">3–5</div><div class="stat-box-label">Days Average Delivery</div></div></div>
+      <div class="stat-box"><div class="stat-box-icon">📍</div><div><div class="stat-box-num">Punjab</div><div class="stat-box-label">India — Serving Nationwide</div></div></div>
+    </div>
+  </div>
 </section>
 
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/919779300886">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-</a>
+<!-- CONTACT CTA -->
+<section id="contact">
+  <div class="contact-cta-box reveal">
+    <div class="section-tag" style="margin-bottom:16px">Ready to Start?</div>
+    <h2 class="section-title">Let's Build Your <span>Website Today</span></h2>
+    <p>Get a free consultation and quote within 1 hour. No commitment required — just tell us what you need.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/919779300886" class="whatsapp-btn">💬 WhatsApp Now</a>
+      <a href="tel:9779300886" class="call-btn">📞 Call Now</a>
+    </div>
+  </div>
+</section>
 
+<!-- FOOTER -->
+<footer>
+  <a href="#home" class="footer-logo">
+    <img src="ChatGPT_Image_Apr_11__2026__06_22_12_PM.png" alt="SandhuWeb"/>
+    <span class="footer-logo-text">Sandhu<span>Web</span></span>
+  </a>
+  <p>Websites & Digital Solutions — Punjab, India</p>
+  <p>📞 <a href="tel:9779300886">+91 97793 00886</a> &nbsp;|&nbsp; 💬 <a href="https://wa.me/919779300886">WhatsApp</a></p>
+  <p style="margin-top:16px;font-size:.75rem;opacity:.5">© 2026 SandhuWeb. All rights reserved.</p>
+</footer>
+
+<script>
+// NAV scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40)
+})
+
+// Scroll reveal
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})
+},{threshold:0.12})
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+
+// Mobile menu
+function toggleMenu(){
+  const links=document.querySelector('.nav-links')
+  if(links.style.display==='flex'){
+    links.style.display='none'
+  } else {
+    links.style.cssText='display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:#fff;padding:24px;gap:20px;border-bottom:1px solid #e2e8f8;z-index:99;box-shadow:0 8px 30px rgba(0,0,0,.1)'
+  }
+}
+
+// Stagger reveal cards
+document.querySelectorAll('.services-grid .service-card, .portfolio-grid .portfolio-card, .testi-grid .testi-card').forEach((el,i)=>{
+  el.style.transitionDelay=(i*0.1)+'s'
+})
+</script>
 </body>
 </html>
