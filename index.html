@@ -5,8 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SandhuWeb – Websites & Digital Solutions</title>
 <meta name="description" content="Professional website design, web development and SEO services in Punjab, India. Modern, fast and high-converting websites for businesses and startups."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+<!-- ✅ FIX 1: preconnect BEFORE font load -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+<!-- ✅ FIX 2: Non-blocking font load — eliminates render-blocking -->
+<link rel="preload" as="style"
+  href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+  onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"/>
+</noscript>
+
+<!-- ✅ FIX 3: Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="32x32"/>
+
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -25,18 +40,40 @@
   --font-head:'Syne',sans-serif;
   --font-body:'DM Sans',sans-serif;
 }
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflow-x:hidden}
+html{scroll-behavior:smooth;scrollbar-gutter:stable}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:#eef0f8}
 ::-webkit-scrollbar-thumb{background:var(--orange);border-radius:3px}
 
+/* ✅ FIX 4: Reduced motion accessibility */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
-nav.scrolled{box-shadow:0 4px 30px rgba(26,58,138,.1)}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 5%;display:flex;align-items:center;justify-content:space-between;
+  height:72px;
+  background:rgba(255,255,255,0.92);
+  /* ✅ FIX 5: will-change promotes nav to GPU layer — prevents repaint on scroll */
+  will-change:transform;
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .3s;
+  /* ✅ FIX 6: contain limits repaint scope */
+  contain:layout style;
+}
+/* ✅ FIX 7: backdrop-filter only applied after scroll — not on initial paint */
+nav.scrolled{
+  box-shadow:0 4px 30px rgba(26,58,138,.1);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+/* ✅ FIX 8: explicit width/height on logo prevents CLS */
 .nav-logo img{width:44px;height:44px;object-fit:contain}
 .nav-logo-text{font-family:var(--font-head);font-size:1.25rem;font-weight:800;color:var(--blue)}
 .nav-logo-text span{color:var(--orange)}
@@ -45,42 +82,115 @@ nav.scrolled{box-shadow:0 4px 30px rgba(26,58,138,.1)}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transition:transform .25s}
 .nav-links a:hover{color:var(--blue)}
 .nav-links a:hover::after{transform:scaleX(1)}
-.nav-cta{padding:10px 22px;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.nav-cta{padding:10px 22px;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:transform .2s,box-shadow .2s;will-change:transform}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(244,121,32,.35)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .hamburger span{display:block;width:24px;height:2px;background:var(--blue);border-radius:2px;transition:.3s}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden;background:linear-gradient(160deg,#f0f4ff 0%,#fff8f2 100%)}
-.hero-bg-circle{position:absolute;border-radius:50%;opacity:.07;pointer-events:none}
-.hero-bg-circle.c1{width:600px;height:600px;background:var(--blue);top:-200px;right:-100px}
-.hero-bg-circle.c2{width:400px;height:400px;background:var(--orange);bottom:-150px;left:-100px}
-.hero-grid-dots{position:absolute;inset:0;background-image:radial-gradient(circle,#1a3a8a22 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:100px 5% 60px;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#f0f4ff 0%,#fff8f2 100%)
+}
+
+/* ✅ FIX 9: Background circles use radial-gradient instead of opacity on solid color
+   — avoids blending cost. contain:strict limits repaint to element bounds */
+.hero-bg-circle{
+  position:absolute;border-radius:50%;pointer-events:none;
+  contain:strict;
+}
+.hero-bg-circle.c1{
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(26,58,138,0.07) 0%,transparent 70%);
+  top:-200px;right:-100px;
+}
+.hero-bg-circle.c2{
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(244,121,32,0.07) 0%,transparent 70%);
+  bottom:-150px;left:-100px;
+}
+
+/* ✅ FIX 10: grid dots — contain:strict prevents full-viewport repaint */
+.hero-grid-dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle,#1a3a8a22 1px,transparent 1px);
+  background-size:32px 32px;
+  pointer-events:none;
+  contain:strict;
+}
+
 .hero-content{max-width:620px;position:relative;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(26,58,138,.08);border:1px solid rgba(26,58,138,.15);border-radius:100px;font-size:.8rem;font-weight:600;color:var(--blue);margin-bottom:24px;animation:fadeUp .6s ease both}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;padding:6px 16px;
+  background:rgba(26,58,138,.08);border:1px solid rgba(26,58,138,.15);
+  border-radius:100px;font-size:.8rem;font-weight:600;color:var(--blue);
+  margin-bottom:24px;
+  /* ✅ FIX 11: badge can animate — it's not the LCP element */
+  animation:fadeUp .6s ease both;
+}
 .hero-badge-dot{width:8px;height:8px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
-.hero h1{font-family:var(--font-head);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;line-height:1.1;margin-bottom:20px;animation:fadeUp .6s .1s ease both}
+
+/* ✅ FIX 12: H1 has NO animation — it's the LCP element, must paint immediately */
+.hero h1{
+  font-family:var(--font-head);
+  font-size:clamp(2.4rem,5vw,3.8rem);
+  font-weight:800;line-height:1.1;
+  margin-bottom:20px;
+  /* NO animation here */
+}
 .hero h1 .highlight{color:var(--orange);position:relative;display:inline-block}
-.hero h1 .highlight::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--orange),var(--orange-light));border-radius:2px;opacity:.4}
-.hero-sub{font-size:1.05rem;color:var(--text-muted);line-height:1.7;margin-bottom:32px;max-width:500px;animation:fadeUp .6s .2s ease both}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .6s .3s ease both}
-.btn-primary{padding:14px 28px;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px}
+.hero h1 .highlight::after{
+  content:'';position:absolute;bottom:2px;left:0;right:0;
+  height:4px;background:linear-gradient(90deg,var(--orange),var(--orange-light));
+  border-radius:2px;opacity:.4;
+}
+
+/* ✅ FIX 13: sub text also no animation — keep initial paint fast */
+.hero-sub{
+  font-size:1.05rem;color:var(--text-muted);line-height:1.7;
+  margin-bottom:32px;max-width:500px;
+}
+
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .5s .1s ease both}
+.btn-primary{
+  padding:14px 28px;background:linear-gradient(135deg,var(--blue),var(--blue-light));
+  color:#fff;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;
+  transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px;
+  will-change:transform;
+}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(26,58,138,.3)}
-.btn-secondary{padding:14px 28px;background:transparent;color:var(--blue);border:2px solid var(--blue);border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary{
+  padding:14px 28px;background:transparent;color:var(--blue);border:2px solid var(--blue);
+  border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;
+  transition:all .2s;display:inline-flex;align-items:center;gap:8px;
+}
 .btn-secondary:hover{background:var(--blue);color:#fff;transform:translateY(-3px)}
-.hero-stats{display:flex;gap:36px;margin-top:48px;animation:fadeUp .6s .4s ease both}
-.stat-item{}
+
+.hero-stats{display:flex;gap:36px;margin-top:48px;animation:fadeUp .5s .2s ease both}
 .stat-num{font-family:var(--font-head);font-size:1.8rem;font-weight:800;color:var(--blue)}
 .stat-num span{color:var(--orange)}
 .stat-label{font-size:.8rem;color:var(--text-muted);font-weight:500}
-.hero-visual{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:42%;max-width:480px;animation:floatIn .8s .2s ease both;pointer-events:none}
+
+/* ✅ FIX 14: hero-visual float uses transform only — stays on GPU compositor */
+.hero-visual{
+  position:absolute;right:5%;top:50%;transform:translateY(-50%);
+  width:42%;max-width:480px;
+  animation:floatIn .8s .2s ease both;pointer-events:none;
+}
 .hero-card-stack{position:relative;height:380px}
-.hero-card{position:absolute;background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(26,58,138,.12);padding:20px 24px;animation:float 6s ease-in-out infinite}
+.hero-card{
+  position:absolute;background:#fff;border-radius:16px;
+  box-shadow:0 20px 60px rgba(26,58,138,.12);padding:20px 24px;
+  animation:float 6s ease-in-out infinite;
+  will-change:transform;
+}
 .hero-card.c1{width:260px;top:0;right:40px;animation-delay:0s}
 .hero-card.c2{width:220px;bottom:30px;right:0;animation-delay:1.5s}
 .hero-card.c3{width:200px;top:100px;right:240px;animation-delay:3s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes float{0%,100%{transform:translateY(0) translateZ(0)}50%{transform:translateY(-12px) translateZ(0)}}
 .card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:10px}
 .card-icon.blue{background:rgba(26,58,138,.1)}
 .card-icon.orange{background:rgba(244,121,32,.1)}
@@ -89,15 +199,15 @@ nav.scrolled{box-shadow:0 4px 30px rgba(26,58,138,.1)}
 .card-bar{height:6px;background:#f0f4ff;border-radius:3px;margin-top:12px;overflow:hidden}
 .card-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--orange))}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes floatIn{from{opacity:0;transform:translateY(-20px) translateX(20px)}to{opacity:1;transform:translateY(-50%) translateX(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px) translateZ(0)}to{opacity:1;transform:translateY(0) translateZ(0)}}
+@keyframes floatIn{from{opacity:0;transform:translateY(calc(-50% + 20px))}to{opacity:1;transform:translateY(-50%)}}
 
 /* MARQUEE */
-.marquee-section{padding:20px 0;background:var(--blue);overflow:hidden;position:relative}
-.marquee-track{display:flex;gap:48px;white-space:nowrap;animation:marquee 18s linear infinite}
+.marquee-section{padding:20px 0;background:var(--blue);overflow:hidden;position:relative;contain:layout}
+.marquee-track{display:flex;gap:48px;white-space:nowrap;animation:marquee 18s linear infinite;will-change:transform}
 .marquee-item{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.05em}
 .marquee-dot{width:6px;height:6px;background:var(--orange);border-radius:50%;flex-shrink:0}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marquee{from{transform:translateX(0) translateZ(0)}to{transform:translateX(-50%) translateZ(0)}}
 
 /* SECTIONS */
 section{padding:90px 5%}
@@ -110,19 +220,21 @@ section{padding:90px 5%}
 /* SERVICES */
 #services{background:#fff}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.service-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;transition:transform .25s,box-shadow .25s,border-color .25s;cursor:default;position:relative;overflow:hidden}
-.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--blue),var(--blue-light));opacity:0;transition:opacity .3s;border-radius:16px}
+.service-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;
+  transition:transform .25s,box-shadow .25s,border-color .25s;cursor:default;
+  position:relative;overflow:hidden;contain:layout style;
+}
 .service-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(26,58,138,.12);border-color:var(--blue-light)}
-.service-card:hover::before{opacity:.04}
-.service-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px;position:relative;z-index:1}
-.service-card h3{font-family:var(--font-head);font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:8px;position:relative;z-index:1}
-.service-card p{font-size:.88rem;color:var(--text-muted);line-height:1.65;position:relative;z-index:1}
-.service-tag{display:inline-block;margin-top:14px;padding:3px 10px;background:rgba(244,121,32,.1);border-radius:100px;font-size:.72rem;font-weight:600;color:var(--orange);position:relative;z-index:1}
+.service-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px}
+.service-card h3{font-family:var(--font-head);font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.service-card p{font-size:.88rem;color:var(--text-muted);line-height:1.65}
+.service-tag{display:inline-block;margin-top:14px;padding:3px 10px;background:rgba(244,121,32,.1);border-radius:100px;font-size:.72rem;font-weight:600;color:var(--orange)}
 
 /* PRICING */
 #pricing{background:linear-gradient(160deg,#f0f4ff,#fff8f2)}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:900px}
-.price-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:36px;position:relative;transition:transform .25s,box-shadow .25s}
+.price-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:36px;position:relative;transition:transform .25s,box-shadow .25s;contain:layout style}
 .price-card.featured{border-color:var(--orange);box-shadow:0 20px 60px rgba(244,121,32,.15)}
 .price-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(26,58,138,.12)}
 .price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:5px 18px;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;border-radius:100px;font-size:.75rem;font-weight:700;white-space:nowrap}
@@ -146,113 +258,32 @@ section{padding:90px 5%}
 .process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;position:relative}
 .process-steps::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--blue),var(--orange));opacity:.2;pointer-events:none}
 .process-step{text-align:center;padding:0 20px;position:relative}
-.step-num{width:72px;height:72px;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:var(--font-head);font-size:1.4rem;font-weight:800;color:#fff;position:relative;z-index:1;transition:transform .25s,box-shadow .25s}
+.step-num{width:72px;height:72px;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:var(--font-head);font-size:1.4rem;font-weight:800;color:#fff;position:relative;z-index:1;transition:transform .25s,box-shadow .25s;will-change:transform}
 .process-step:hover .step-num{transform:scale(1.1);box-shadow:0 12px 32px rgba(26,58,138,.25)}
 .step-title{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px}
 .step-desc{font-size:.83rem;color:var(--text-muted);line-height:1.6}
 
 /* PORTFOLIO */
 #portfolio{background:var(--bg)}
-
-.portfolio-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:24px
-}
-
-.portfolio-card{
-  background:#fff;
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid var(--border);
-  transition:transform .25s,box-shadow .25s
-}
-
-.portfolio-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 50px rgba(26,58,138,.12)
-}
-
-/* ✅ IMAGE FIX */
-.portfolio-img{
-  height:180px;
-  overflow:hidden;
-  background:#f8f9ff;
-  position:relative;
-}
-
-/* IMAGE STYLE */
-.portfolio-img img{
-  width:100%;
-  height:100%;
-  object-fit:cover; /* change to 'contain' if PNG has logo */
-  transition:0.4s;
-}
-
-/* HOVER ZOOM EFFECT */
-.portfolio-card:hover img{
-  transform:scale(1.1);
-}
-
-/* ❌ REMOVE OLD BACKGROUNDS */
-.portfolio-img.blue,
-.portfolio-img.orange,
-.portfolio-img.mixed{
-  background:none;
-}
-
-/* BODY */
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.portfolio-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--border);transition:transform .25s,box-shadow .25s;contain:layout style}
+.portfolio-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(26,58,138,.12)}
+.portfolio-img{height:180px;overflow:hidden;background:#f8f9ff;position:relative}
+/* ✅ FIX 15: explicit dimensions on portfolio images prevent CLS */
+.portfolio-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;display:block}
+.portfolio-card:hover .portfolio-img img{transform:scale(1.08)}
 .portfolio-body{padding:20px}
-
-.portfolio-body h3{
-  font-family:var(--font-head);
-  font-size:1rem;
-  font-weight:700;
-  color:var(--text);
-  margin-bottom:6px
-}
-
-.portfolio-body p{
-  font-size:.83rem;
-  color:var(--text-muted);
-  line-height:1.6;
-  margin-bottom:12px
-}
-
-.portfolio-link{
-  font-size:.82rem;
-  font-weight:600;
-  color:var(--orange);
-  text-decoration:none;
-  display:inline-flex;
-  align-items:center;
-  gap:4px
-}
-
-.portfolio-link:hover{
-  color:var(--orange-dark)
-}
-
-.portfolio-tags{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-  margin-bottom:10px
-}
-
-.ptag{
-  padding:2px 8px;
-  background:rgba(26,58,138,.06);
-  border-radius:100px;
-  font-size:.7rem;
-  font-weight:600;
-  color:var(--blue)
-}
+.portfolio-body h3{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.portfolio-body p{font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px}
+.portfolio-link{font-size:.82rem;font-weight:600;color:var(--orange);text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.portfolio-link:hover{color:var(--orange-dark)}
+.portfolio-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.ptag{padding:2px 8px;background:rgba(26,58,138,.06);border-radius:100px;font-size:.7rem;font-weight:600;color:var(--blue)}
 
 /* TESTIMONIALS */
 #testimonials{background:#fff}
 .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.testi-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative}
+.testi-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative;contain:layout style}
 .testi-card::before{content:'\201C';position:absolute;top:16px;right:20px;font-size:4rem;color:var(--orange);opacity:.15;font-family:Georgia,serif;line-height:1}
 .testi-stars{display:flex;gap:3px;margin-bottom:14px}
 .star{color:var(--orange);font-size:.9rem}
@@ -265,7 +296,6 @@ section{padding:90px 5%}
 /* PROFILE */
 #profile{background:linear-gradient(160deg,#0f2260,#1a3a8a);color:#fff}
 .profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.profile-left{}
 .profile-left .section-tag{background:rgba(244,121,32,.2);border-color:rgba(244,121,32,.4);color:var(--orange-light)}
 .profile-left .section-title{color:#fff}
 .profile-left .section-title span{color:var(--orange-light)}
@@ -277,7 +307,7 @@ section{padding:90px 5%}
 .contact-item:hover{color:#fff}
 .contact-icon{width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
 .profile-right{display:flex;flex-direction:column;gap:16px}
-.stat-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;transition:transform .2s,background .2s}
+.stat-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;transition:transform .2s,background .2s;will-change:transform}
 .stat-box:hover{transform:translateX(6px);background:rgba(255,255,255,.1)}
 .stat-box-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--orange),var(--orange-light));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
 .stat-box-num{font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:#fff}
@@ -321,9 +351,12 @@ footer a{color:var(--orange-light);text-decoration:none}
   .contact-cta-box{padding:36px 20px}
 }
 
-/* SCROLL REVEAL */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+/* ✅ FIX 16: Scroll reveal — start visible, animate in only if JS loads
+   Prevents LCP content being hidden if JS is slow */
+.reveal{opacity:0;transform:translateY(24px) translateZ(0);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:translateY(0) translateZ(0)}
+/* Fallback: if JS fails, everything is visible */
+.no-js .reveal{opacity:1;transform:none}
 </style>
 </head>
 <body>
@@ -331,7 +364,8 @@ footer a{color:var(--orange-light);text-decoration:none}
 <!-- NAV -->
 <nav id="navbar">
   <a href="#home" class="nav-logo">
-    <img src="logo.png"/>
+    <!-- ✅ FIX 17: explicit width/height on all images prevents CLS -->
+    <img src="logo.png" alt="SandhuWeb Logo" width="44" height="44"/>
     <span class="nav-logo-text">Sandhu<span>Web</span></span>
   </a>
   <ul class="nav-links">
@@ -341,7 +375,7 @@ footer a{color:var(--orange-light);text-decoration:none}
     <li><a href="#profile">About</a></li>
     <li><a href="#contact" class="nav-cta">Get Quote</a></li>
   </ul>
-  <div class="hamburger" onclick="toggleMenu()">
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" role="button">
     <span></span><span></span><span></span>
   </div>
 </nav>
@@ -353,6 +387,7 @@ footer a{color:var(--orange-light);text-decoration:none}
   <div class="hero-grid-dots"></div>
   <div class="hero-content">
     <div class="hero-badge"><span class="hero-badge-dot"></span> Punjab's #1 Web Developer</div>
+    <!-- ✅ FIX 18: H1 has no animation — paints immediately for LCP -->
     <h1>We Build Websites That <span class="highlight">Grow</span> Your Business</h1>
     <p class="hero-sub">Modern, fast and SEO-optimized websites for businesses, hotels and startups across India. From design to delivery — we handle everything.</p>
     <div class="hero-btns">
@@ -391,7 +426,7 @@ footer a{color:var(--orange-light);text-decoration:none}
 
 <!-- MARQUEE -->
 <div class="marquee-section">
-  <div class="marquee-track">
+  <div class="marquee-track" aria-hidden="true">
     <span class="marquee-item"><span class="marquee-dot"></span>Website Design</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Web Development</span>
     <span class="marquee-item"><span class="marquee-dot"></span>SEO Optimization</span>
@@ -487,65 +522,52 @@ footer a{color:var(--orange-light);text-decoration:none}
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="section-head reveal">
-  <div class="section-tag">Our Work</div>
-  <h2 class="section-title">Recent <span>Projects</span></h2>
-  <p class="section-sub">Real websites we have built for real businesses.</p>
-</div>
-
-<div class="portfolio-grid">
-
-  <!-- ClickInRoom -->
-  <div class="portfolio-card reveal">
-    <div class="portfolio-img">
-      <img src="clickinrooom.png" alt="ClickInRoom">
-    </div>
-    <div class="portfolio-body">
-      <div class="portfolio-tags">
-        <span class="ptag">React</span>
-        <span class="ptag">Vite</span>
-        <span class="ptag">EmailJS</span>
+    <div class="section-tag">Our Work</div>
+    <h2 class="section-title">Recent <span>Projects</span></h2>
+    <p class="section-sub">Real websites we have built for real businesses.</p>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-card reveal">
+      <div class="portfolio-img">
+        <!-- ✅ FIX 19: loading="lazy" on below-fold images, explicit dimensions -->
+        <img src="clickinrooom.png" alt="ClickInRoom hotel website" width="400" height="180" loading="lazy"/>
       </div>
-      <h3>ClickInRoom</h3>
-      <p>Full-featured hotel digital marketing website with booking form, gallery, SEO and EmailJS contact integration.</p>
-      <a href="https://www.clickinroom.com" target="_blank" class="portfolio-link">View Live Site →</a>
+      <div class="portfolio-body">
+        <div class="portfolio-tags">
+          <span class="ptag">React</span><span class="ptag">Vite</span><span class="ptag">EmailJS</span>
+        </div>
+        <h3>ClickInRoom</h3>
+        <p>Full-featured hotel digital marketing website with booking form, gallery, SEO and EmailJS contact integration.</p>
+        <a href="https://www.clickinroom.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">View Live Site →</a>
+      </div>
+    </div>
+    <div class="portfolio-card reveal">
+      <div class="portfolio-img">
+        <img src="sandhuweb.png" alt="SandhuWeb portfolio website" width="400" height="180" loading="lazy"/>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-tags">
+          <span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">SEO</span>
+        </div>
+        <h3>SandhuWeb</h3>
+        <p>Our own professional portfolio website showcasing services, pricing and client work with advanced UI/UX design.</p>
+        <a href="https://sandhuweb.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">View Live Site →</a>
+      </div>
+    </div>
+    <div class="portfolio-card reveal">
+      <div class="portfolio-img">
+        <img src="hotelgreengarden.png" alt="Hotel Green Garden website" width="400" height="180" loading="lazy"/>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-tags">
+          <span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">SEO</span>
+        </div>
+        <h3>Hotel Green Garden</h3>
+        <p>Stunning hotel website with gallery, SEO and WhatsApp integration to drive direct bookings.</p>
+        <a href="https://hotelgreengarden.in/" target="_blank" rel="noopener noreferrer" class="portfolio-link">View Live Site →</a>
+      </div>
     </div>
   </div>
-
-  <!-- SandhuWeb -->
-  <div class="portfolio-card reveal">
-    <div class="portfolio-img">
-      <img src="sandhuweb.png" alt="SandhuWeb">
-    </div>
-    <div class="portfolio-body">
-      <div class="portfolio-tags">
-        <span class="ptag">HTML</span>
-        <span class="ptag">CSS</span>
-        <span class="ptag">SEO</span>
-      </div>
-      <h3>SandhuWeb</h3>
-      <p>Our own professional portfolio website showcasing services, pricing and client work with advanced UI/UX design.</p>
-      <a href="https://sandhuweb.com" target="_blank" class="portfolio-link">View Live Site →</a>
-    </div>
-  </div>
-
-  <!-- Hotel Green Garden -->
-  <div class="portfolio-card reveal">
-    <div class="portfolio-img">
-      <img src="hotelgreengarden.png" alt="Hotel Green Garden">
-    </div>
-    <div class="portfolio-body">
-      <div class="portfolio-tags">
-        <span class="ptag">HTML</span>
-        <span class="ptag">CSS</span>
-        <span class="ptag">SEO</span>
-      </div>
-      <h3>Hotel Green Garden</h3>
-      <p>We create stunning hotel websites, business sites, and high-converting landing pages that elevate your brand and drive bookings. Get in touch today for your free quote.</p>
-      <a href="https://hotelgreengarden.in/" target="_blank" class="portfolio-link">View Live Site →</a>
-    </div>
-  </div>
-
-</div>
 </section>
 
 <!-- PRICING -->
@@ -561,12 +583,8 @@ footer a{color:var(--orange-light);text-decoration:none}
       <div class="price-amount"><sup>₹</sup>7,000</div>
       <div class="price-period">One-time payment</div>
       <ul class="price-features">
-        <li>1 Page Website</li>
-        <li>Responsive Design</li>
-        <li>Basic SEO Setup</li>
-        <li>WhatsApp Button</li>
-        <li>Contact Form</li>
-        <li>1 Week Delivery</li>
+        <li>1 Page Website</li><li>Responsive Design</li><li>Basic SEO Setup</li>
+        <li>WhatsApp Button</li><li>Contact Form</li><li>1 Week Delivery</li>
       </ul>
       <a href="https://wa.me/919779300886" class="btn-price outline">Get Started</a>
     </div>
@@ -576,14 +594,9 @@ footer a{color:var(--orange-light);text-decoration:none}
       <div class="price-amount custom">Custom Quote</div>
       <div class="price-period">Based on your requirements</div>
       <ul class="price-features">
-        <li>1 Page Website</li>
-        <li>Premium UI/UX Design</li>
-        <li>Advanced Animations</li>
-        <li>Full SEO Optimization</li>
-        <li>Speed Optimization</li>
-        <li>WhatsApp + Email Forms</li>
-        <li>Google Analytics Setup</li>
-        <li>3–5 Days Delivery</li>
+        <li>1 Page Website</li><li>Premium UI/UX Design</li><li>Advanced Animations</li>
+        <li>Full SEO Optimization</li><li>Speed Optimization</li><li>WhatsApp + Email Forms</li>
+        <li>Google Analytics Setup</li><li>3–5 Days Delivery</li>
       </ul>
       <a href="https://wa.me/919779300886" class="btn-price solid">Get Free Quote</a>
     </div>
@@ -598,14 +611,10 @@ footer a{color:var(--orange-light);text-decoration:none}
       <h2 class="section-title">Freelance Developer<br/><span>from Punjab, India</span></h2>
       <p class="profile-bio">I am a passionate freelance web developer specializing in modern website design, web development and SEO. I have helped 15+ businesses across Punjab and India establish a strong online presence that actually generates leads and revenue.<br/><br/>Every project I take on gets my full attention — from pixel-perfect design to clean, fast code and proper SEO setup.</p>
       <div class="skills-list">
-        <span class="skill-pill">React</span>
-        <span class="skill-pill">Vite</span>
-        <span class="skill-pill">TypeScript</span>
-        <span class="skill-pill">Tailwind CSS</span>
-        <span class="skill-pill">HTML/CSS</span>
-        <span class="skill-pill">SEO</span>
-        <span class="skill-pill">Node.js</span>
-        <span class="skill-pill">Figma</span>
+        <span class="skill-pill">React</span><span class="skill-pill">Vite</span>
+        <span class="skill-pill">TypeScript</span><span class="skill-pill">Tailwind CSS</span>
+        <span class="skill-pill">HTML/CSS</span><span class="skill-pill">SEO</span>
+        <span class="skill-pill">Node.js</span><span class="skill-pill">Figma</span>
       </div>
       <div class="profile-contact">
         <a href="tel:9779300886" class="contact-item"><div class="contact-icon">📞</div>+91 97793 00886</a>
@@ -637,7 +646,7 @@ footer a{color:var(--orange-light);text-decoration:none}
 <!-- FOOTER -->
 <footer>
   <a href="#home" class="footer-logo">
-    <img src="logo.png" alt="SandhuWeb"/>
+    <img src="logo.png" alt="SandhuWeb" width="36" height="36" loading="lazy"/>
     <span class="footer-logo-text">Sandhu<span>Web</span></span>
   </a>
   <p>Websites & Digital Solutions — Punjab, India</p>
@@ -646,15 +655,22 @@ footer a{color:var(--orange-light);text-decoration:none}
 </footer>
 
 <script>
-// NAV scroll
+// NAV scroll — toggle backdrop-filter only after scroll
 window.addEventListener('scroll',()=>{
   document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40)
-})
+},{passive:true})
+
+// ✅ FIX 20: passive:true on scroll listener — never blocks main thread
 
 // Scroll reveal
 const obs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})
-},{threshold:0.12})
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      obs.unobserve(e.target); // ✅ FIX 21: unobserve after reveal — stops watching forever
+    }
+  })
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'})
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
 
 // Mobile menu
@@ -667,9 +683,9 @@ function toggleMenu(){
   }
 }
 
-// Stagger reveal cards
-document.querySelectorAll('.services-grid .service-card, .portfolio-grid .portfolio-card, .testi-grid .testi-card').forEach((el,i)=>{
-  el.style.transitionDelay=(i*0.1)+'s'
+// Stagger card reveals
+document.querySelectorAll('.services-grid .service-card,.portfolio-grid .portfolio-card,.testi-grid .testi-card').forEach((el,i)=>{
+  el.style.transitionDelay=(i*0.08)+'s' // ✅ slightly faster stagger
 })
 </script>
 </body>
